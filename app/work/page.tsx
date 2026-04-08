@@ -10,7 +10,6 @@ const EXPERIENCES = [
     description: [
       "Senior project. Building the post-segmentation data infrastructure for large-scale 3D medical imaging.",
       "Designed modular pipeline architecture: HDF5/Zarr storage, graph construction from segmented volumes, automated validation modules, diagnostic visualization.",
-      "The kind of systems work where the data is measured in terabytes and the margin for silent corruption is zero.",
     ],
   },
   {
@@ -20,7 +19,6 @@ const EXPERIENCES = [
     description: [
       "Designed software interfaces for a next-generation MTJ-based in-memory AI accelerator targeting the Zynq 7020 FPGA.",
       "Built end-to-end validation pipelines benchmarking power consumption, latency, and throughput against conventional architectures.",
-      "The thesis: when you co-design the compute and the memory, you can break assumptions that have constrained AI hardware for a decade.",
     ],
   },
   {
@@ -30,7 +28,6 @@ const EXPERIENCES = [
     description: [
       "End-to-end deployment of transformer models on Raspberry Pi and embedded Linux platforms.",
       "Built profiling frameworks to characterize architectural tradeoffs (latency, memory footprint, power draw, accuracy) for models that need to run at the edge, not in a data center.",
-      "Proved that meaningful inference is possible on hardware that costs less than a textbook.",
     ],
   },
   {
@@ -38,9 +35,8 @@ const EXPERIENCES = [
     period: "May – Sept 2024",
     location: "Belgium",
     description: [
-      "22nm mixed-signal Compute-In-Memory accelerator. The kind of chip work where you're thinking about transistor-level behavior and system-level architecture simultaneously.",
+      "22nm mixed-signal Compute-In-Memory accelerator.",
       "Wrote RISC-V control firmware. Designed calibration routines that improved reliability by 25–45% across operating conditions.",
-      "Learned that the gap between a chip that works in simulation and a chip that works in silicon is where engineering actually happens.",
     ],
   },
   {
@@ -48,8 +44,8 @@ const EXPERIENCES = [
     period: "Jul – Aug 2023",
     location: "Amman, Jordan",
     description: [
-      "SIEM analysis and incident response in a cross-cultural environment, operating entirely in Arabic.",
-      "Threat monitoring, log correlation, vulnerability assessment. The work that happens between an alert firing and a decision being made.",
+      "SIEM analysis and incident response in a cross-cultural environment, leveraging Arabic communication skills.",
+      "Threat monitoring, log correlation, vulnerability assessment.",
     ],
   },
 ];
