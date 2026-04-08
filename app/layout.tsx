@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { DM_Serif_Display, Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
-import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
 
@@ -28,22 +27,18 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: "Joseph Elsayyid",
-  description:
-    "Engineer, builder, strategist. Designing systems across chips, institutions, and continents.",
+  description: "Engineer. Yale EECS '26.",
   keywords: [
     "Joseph Elsayyid",
     "Yale",
     "EECS",
     "Electrical Engineering",
     "Computer Science",
-    "AI Hardware",
-    "Systems Engineering",
   ],
   authors: [{ name: "Joseph Elsayyid" }],
   openGraph: {
     title: "Joseph Elsayyid",
-    description:
-      "Engineer, builder, strategist. Designing systems across chips, institutions, and continents.",
+    description: "Engineer. Yale EECS '26.",
     url: "https://josephelsayyid.com",
     siteName: "Joseph Elsayyid",
     locale: "en_US",
@@ -52,8 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Joseph Elsayyid",
-    description:
-      "Engineer, builder, strategist. Designing systems across chips, institutions, and continents.",
+    description: "Engineer. Yale EECS '26.",
   },
   robots: {
     index: true,
@@ -73,7 +67,6 @@ export default function RootLayout({
     >
       <body>
         <SmoothScroll>
-          <CustomCursor />
           <Navigation />
           <main>{children}</main>
           <Footer />
