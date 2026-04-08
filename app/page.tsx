@@ -23,10 +23,10 @@ export default function Home() {
 
         <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs text-text-muted tracking-wider">
           <a
-            href="mailto:elsayyidj@gmail.com"
+            href="mailto:elsayyidjoseph@gmail.com"
             className="hover:text-text-secondary transition-colors duration-300"
           >
-            elsayyidj@gmail.com
+            elsayyidjoseph@gmail.com
           </a>
           <a
             href="/resume.pdf"

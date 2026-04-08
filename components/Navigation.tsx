@@ -150,7 +150,7 @@ export default function Navigation() {
                 transition={{ delay: 0.5 }}
                 className="mt-12 font-mono text-xs text-text-muted tracking-wider"
               >
-                elsayyidj@gmail.com
+                elsayyidjoseph@gmail.com
               </motion.div>
             </div>
           </motion.div>

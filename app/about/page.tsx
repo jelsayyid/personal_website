@@ -59,10 +59,10 @@ export default function AboutPage() {
               </span>
               <div className="space-y-1">
                 <a
-                  href="mailto:elsayyidj@gmail.com"
+                  href="mailto:elsayyidjoseph@gmail.com"
                   className="block font-body text-sm text-text-primary hover:text-accent transition-colors duration-300"
                 >
-                  elsayyidj@gmail.com
+                  elsayyidjoseph@gmail.com
                 </a>
                 <a
                   href="/resume.pdf"

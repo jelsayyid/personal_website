@@ -1,15 +1,12 @@
 export default function Footer() {
   return (
     <footer className="border-t border-border">
-      <div className="page-section py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <p className="font-mono text-[10px] text-text-muted tracking-wider">
-          &copy; {new Date().getFullYear()} Joseph Elsayyid
-        </p>
+      <div className="page-section py-8">
         <a
-          href="mailto:elsayyidj@gmail.com"
+          href="mailto:elsayyidjoseph@gmail.com"
           className="font-mono text-[10px] text-text-muted tracking-wider hover:text-text-secondary transition-colors duration-300"
         >
-          elsayyidj@gmail.com
+          elsayyidjoseph@gmail.com
         </a>
       </div>
     </footer>
