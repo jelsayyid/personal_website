@@ -1,20 +1,16 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
 const NAV_LINKS = [
-  { href: "/", label: "Index" },
-  { href: "/work", label: "Work" },
-  { href: "/leadership", label: "Leadership" },
-  { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
+  { href: "#work", label: "Work" },
+  { href: "#projects", label: "Projects" },
+  { href: "#leadership", label: "Leadership" },
+  { href: "#about", label: "About" },
 ];
 
 export default function Navigation() {
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
@@ -26,15 +22,13 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
+
+  const handleClick = () => setMobileOpen(false);
 
   return (
     <>
@@ -48,38 +42,27 @@ export default function Navigation() {
         style={{ height: "var(--nav-height)" }}
       >
         <div className="h-full flex items-center justify-between page-section">
-          <Link
-            href="/"
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             className="relative z-50 font-display text-xl tracking-tight text-text-primary hover:text-accent transition-colors duration-300"
           >
             J.E.
-          </Link>
+          </a>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
-                className={`relative font-mono text-xs uppercase tracking-[0.2em] transition-colors duration-300 py-1 ${
-                  pathname === link.href
-                    ? "text-accent"
-                    : "text-text-secondary hover:text-text-primary"
-                }`}
+                className="relative font-mono text-xs uppercase tracking-[0.2em] transition-colors duration-300 py-1 text-text-secondary hover:text-text-primary"
               >
                 {link.label}
-                {pathname === link.href && (
-                  <motion.span
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-0.5 left-0 right-0 h-px bg-accent"
-                    transition={{
-                      type: "spring",
-                      stiffness: 350,
-                      damping: 30,
-                    }}
-                  />
-                )}
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -132,16 +115,13 @@ export default function Navigation() {
                   exit={{ opacity: 0, x: -30 }}
                   transition={{ delay: i * 0.08, duration: 0.4 }}
                 >
-                  <Link
+                  <a
                     href={link.href}
-                    className={`block font-display text-5xl mb-6 transition-colors duration-300 ${
-                      pathname === link.href
-                        ? "text-accent"
-                        : "text-text-primary hover:text-accent"
-                    }`}
+                    onClick={handleClick}
+                    className="block font-display text-5xl mb-6 transition-colors duration-300 text-text-primary hover:text-accent"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
               <motion.div

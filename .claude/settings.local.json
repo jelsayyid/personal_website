@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src=no --import-alias \"@/*\" --use-npm)"
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src=no --import-alias \"@/*\" --use-npm)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(nslookup josephelsayyid.com)",
+      "Bash(nslookup josephelsayyid.com 1.1.1.1)",
+      "Bash(ipconfig //flushdns)",
+      "Bash(find /c/Users/ajels/projects/personal_website -name *.css -o -name *.module.*)",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }
