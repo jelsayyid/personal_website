@@ -308,14 +308,7 @@ export default function Home() {
                 and French.
               </p>
             </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <p className="font-body text-base text-text-secondary leading-relaxed">
-                I&rsquo;m applying to Yale SOM&rsquo;s MMS-TM program because the
-                systems I want to build next require understanding markets and
-                institutions as well as I understand circuits and code.
-              </p>
-            </ScrollReveal>
-          </div>
+            </div>
 
           <ScrollReveal delay={0.15}>
             <div className="border-t border-border pt-8 space-y-6">
