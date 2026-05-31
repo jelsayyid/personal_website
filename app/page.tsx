@@ -155,9 +155,10 @@ export default function Home() {
           </h1>
 
           <p className="max-w-md text-base text-text-secondary font-body leading-relaxed mb-10">
-            Engineer working across chip design, AI hardware, edge ML, and
-            institutional technology. B.S. in EECS from Yale; M.M.S. in
-            Technology Management at Yale SOM.
+            Yale-trained engineer and technology leader focused on how advanced
+            computing moves from labs into public institutions. My work spans
+            research, student governance, and cross-cultural diplomacy across
+            East Asia, Europe, and the Middle East.
           </p>
 
           <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs text-text-muted tracking-wider">
