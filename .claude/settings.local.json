@@ -1,14 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src=no --import-alias \"@/*\" --use-npm)",
-      "Bash(npm install:*)",
-      "Bash(npm run:*)",
-      "Bash(nslookup josephelsayyid.com)",
-      "Bash(nslookup josephelsayyid.com 1.1.1.1)",
-      "Bash(ipconfig //flushdns)",
-      "Bash(find /c/Users/ajels/projects/personal_website -name *.css -o -name *.module.*)",
-      "mcp__Claude_Preview__preview_start"
+      "Bash(gh auth *)",
+      "Bash(git config *)",
+      "PowerShell(Write-Output \"--- git ---\"; \\(Get-Command git -ErrorAction SilentlyContinue\\).Source; Write-Output \"--- gh ---\"; \\(Get-Command gh -ErrorAction SilentlyContinue\\).Source; Write-Output \"--- gh auth ---\"; try { gh auth status } catch {}; Write-Output \"--- git identity ---\"; git config --global user.name; git config --global user.email)",
+      "PowerShell(git clone https://github.com/jelsayyid/personal_website.git . 2>&1)",
+      "WebFetch(domain:www.linkedin.com)",
+      "mcp__Claude_in_Chrome__list_connected_browsers",
+      "Bash(npm install *)"
     ]
   }
 }
