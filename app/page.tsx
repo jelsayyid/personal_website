@@ -336,6 +336,12 @@ export default function Home() {
                   Education
                 </span>
                 <p className="font-body text-sm text-text-primary">
+                  Yale School of Management
+                </p>
+                <p className="font-body text-sm text-text-secondary mb-3">
+                  M.M.S. Technology Management, 2026–27
+                </p>
+                <p className="font-body text-sm text-text-primary">
                   Yale University
                 </p>
                 <p className="font-body text-sm text-text-secondary mb-3">
