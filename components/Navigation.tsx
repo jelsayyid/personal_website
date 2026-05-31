@@ -41,18 +41,7 @@ export default function Navigation() {
         }`}
         style={{ height: "var(--nav-height)" }}
       >
-        <div className="h-full flex items-center justify-between page-section">
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="relative z-50 font-display text-xl tracking-tight text-text-primary hover:text-accent transition-colors duration-300"
-          >
-            J.E.
-          </a>
-
+        <div className="h-full flex items-center justify-end page-section">
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
