@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const EXPERIENCES = [
@@ -142,40 +143,60 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="min-h-screen flex items-center page-section pt-20">
+      <section className="min-h-screen flex items-center page-section pt-24 pb-16">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
+          className="grid w-full items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(320px,430px)]"
         >
-          <h1 className="font-display text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight mb-6">
-            Joseph
-            <br />
-            Elsayyid
-          </h1>
+          <div>
+            <h1 className="font-display text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight mb-6">
+              Joseph
+              <br />
+              Elsayyid
+            </h1>
 
-          <p className="max-w-md text-base text-text-secondary font-body leading-relaxed mb-10">
-            Yale-trained engineer and technology leader focused on how advanced
-            computing moves from labs into public institutions. My work spans
-            research, institutional technology strategy, and cross-cultural
-            diplomacy across East Asia, Europe, and the Middle East.
-          </p>
+            <p className="max-w-md text-base text-text-secondary font-body leading-relaxed mb-10">
+              Yale-trained engineer and technology leader focused on how advanced
+              computing moves from labs into public institutions. My work spans
+              research, institutional technology strategy, and cross-cultural
+              diplomacy across East Asia, Europe, and the Middle East.
+            </p>
 
-          <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs text-text-muted tracking-wider">
-            <a
-              href="mailto:elsayyidjoseph@gmail.com"
-              className="hover:text-text-secondary transition-colors duration-300"
-            >
-              elsayyidjoseph@gmail.com
-            </a>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-text-secondary transition-colors duration-300"
-            >
-              Resume
-            </a>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs text-text-muted tracking-wider">
+              <a
+                href="mailto:elsayyidjoseph@gmail.com"
+                className="hover:text-text-secondary transition-colors duration-300"
+              >
+                elsayyidjoseph@gmail.com
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-text-secondary transition-colors duration-300"
+              >
+                Resume
+              </a>
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-[24rem] justify-self-center lg:mx-0 lg:justify-self-end">
+            <div className="relative aspect-[4/5] overflow-hidden border border-border bg-bg-secondary">
+              <Image
+                src="/joseph-elsayyid-schwarzman.jpeg"
+                alt="Joseph Elsayyid"
+                fill
+                priority
+                sizes="(min-width: 1024px) 430px, min(100vw - 3rem, 384px)"
+                className="object-cover object-[50%_42%]"
+              />
+            </div>
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-3 -right-3 -z-10 h-full w-full border border-accent/30"
+            />
           </div>
         </motion.div>
       </section>
