@@ -345,7 +345,7 @@ export default function Home() {
                   Yale University
                 </p>
                 <p className="font-body text-sm text-text-secondary mb-3">
-                  B.S. Electrical Engineering & Computer Science, May 2026
+                  B.S. Electrical Engineering & Computer Science, 2022–26
                 </p>
                 <p className="font-body text-sm text-text-primary">
                   Wenzao Ursuline University of Languages
