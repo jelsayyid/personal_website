@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, useCallback } from "react";
+import { useRef, useMemo, useCallback, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -8,37 +8,46 @@ const PARTICLE_COUNT = 80;
 const CONNECTION_DISTANCE = 2.8;
 const MOUSE_INFLUENCE = 0.6;
 
+function seededRandom(seed: number) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+function createParticles() {
+  const positions = new Float32Array(PARTICLE_COUNT * 3);
+  const velocities = new Float32Array(PARTICLE_COUNT * 3);
+  const spread = 8;
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    positions[i * 3] = (seededRandom(i * 6 + 1) - 0.5) * spread * 2;
+    positions[i * 3 + 1] = (seededRandom(i * 6 + 2) - 0.5) * spread;
+    positions[i * 3 + 2] = (seededRandom(i * 6 + 3) - 0.5) * 4 - 2;
+    velocities[i * 3] = (seededRandom(i * 6 + 4) - 0.5) * 0.003;
+    velocities[i * 3 + 1] = (seededRandom(i * 6 + 5) - 0.5) * 0.003;
+    velocities[i * 3 + 2] = (seededRandom(i * 6 + 6) - 0.5) * 0.001;
+  }
+
+  return { positions, velocities };
+}
+
+function createLineBuffers() {
+  const maxLines = PARTICLE_COUNT * PARTICLE_COUNT;
+  const positions = new Float32Array(maxLines * 6);
+  const colors = new Float32Array(maxLines * 6);
+  return { positions, colors };
+}
+
 function NetworkMesh() {
   const meshRef = useRef<THREE.Points>(null);
   const linesRef = useRef<THREE.LineSegments>(null);
   const mouseRef = useRef(new THREE.Vector2(0, 0));
+  const lineGeometryRef = useRef<THREE.BufferGeometry | null>(null);
+  const linePositionAttrRef = useRef<THREE.BufferAttribute | null>(null);
+  const lineColorAttrRef = useRef<THREE.BufferAttribute | null>(null);
   const { viewport } = useThree();
 
-  const particles = useMemo(() => {
-    const positions = new Float32Array(PARTICLE_COUNT * 3);
-    const velocities = new Float32Array(PARTICLE_COUNT * 3);
-    const spread = 8;
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * spread * 2;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * spread;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 4 - 2;
-      velocities[i * 3] = (Math.random() - 0.5) * 0.003;
-      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.003;
-      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.001;
-    }
-    return { positions, velocities };
-  }, []);
-
-  const lineGeometry = useMemo(() => {
-    const maxLines = PARTICLE_COUNT * PARTICLE_COUNT;
-    const positions = new Float32Array(maxLines * 6);
-    const colors = new Float32Array(maxLines * 6);
-    const geom = new THREE.BufferGeometry();
-    geom.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    geom.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-    geom.setDrawRange(0, 0);
-    return geom;
-  }, []);
+  const particles = useMemo(() => createParticles(), []);
+  const lineBuffers = useMemo(() => createLineBuffers(), []);
 
   const onPointerMove = useCallback(
     (e: PointerEvent) => {
@@ -48,11 +57,11 @@ function NetworkMesh() {
     []
   );
 
-  // Set up pointer tracking
-  useMemo(() => {
+  useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("pointermove", onPointerMove, { passive: true });
     }
+
     return () => {
       if (typeof window !== "undefined") {
         window.removeEventListener("pointermove", onPointerMove);
@@ -61,7 +70,15 @@ function NetworkMesh() {
   }, [onPointerMove]);
 
   useFrame(() => {
-    if (!meshRef.current || !linesRef.current) return;
+    if (
+      !meshRef.current ||
+      !linesRef.current ||
+      !lineGeometryRef.current ||
+      !linePositionAttrRef.current ||
+      !lineColorAttrRef.current
+    ) {
+      return;
+    }
 
     const posAttr = meshRef.current.geometry.attributes
       .position as THREE.BufferAttribute;
@@ -101,9 +118,11 @@ function NetworkMesh() {
     posAttr.needsUpdate = true;
 
     // Draw connections
-    const linePos = lineGeometry.attributes.position
-      .array as Float32Array;
-    const lineCol = lineGeometry.attributes.color.array as Float32Array;
+    const lineGeometry = lineGeometryRef.current;
+    const linePositionAttr = linePositionAttrRef.current;
+    const lineColorAttr = lineColorAttrRef.current;
+    const linePos = linePositionAttr.array as Float32Array;
+    const lineCol = lineColorAttr.array as Float32Array;
     let lineIdx = 0;
 
     // Accent color: #C45D3E → normalized
@@ -141,12 +160,8 @@ function NetworkMesh() {
     }
 
     lineGeometry.setDrawRange(0, lineIdx * 2);
-    (
-      lineGeometry.attributes.position as THREE.BufferAttribute
-    ).needsUpdate = true;
-    (
-      lineGeometry.attributes.color as THREE.BufferAttribute
-    ).needsUpdate = true;
+    linePositionAttr.needsUpdate = true;
+    lineColorAttr.needsUpdate = true;
   });
 
   return (
@@ -166,7 +181,19 @@ function NetworkMesh() {
           sizeAttenuation
         />
       </points>
-      <lineSegments ref={linesRef} geometry={lineGeometry}>
+      <lineSegments ref={linesRef}>
+        <bufferGeometry ref={lineGeometryRef}>
+          <bufferAttribute
+            ref={linePositionAttrRef}
+            attach="attributes-position"
+            args={[lineBuffers.positions, 3]}
+          />
+          <bufferAttribute
+            ref={lineColorAttrRef}
+            attach="attributes-color"
+            args={[lineBuffers.colors, 3]}
+          />
+        </bufferGeometry>
         <lineBasicMaterial
           vertexColors
           transparent

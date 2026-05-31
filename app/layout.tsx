@@ -27,18 +27,23 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: "Joseph Elsayyid",
-  description: "Engineer. Yale EECS '26.",
+  description:
+    "Engineer working across AI hardware, edge ML, chip design, and institutional technology. Yale EECS and Yale SOM.",
   keywords: [
     "Joseph Elsayyid",
     "Yale",
     "EECS",
     "Electrical Engineering",
     "Computer Science",
+    "Yale School of Management",
+    "AI Hardware",
+    "Edge ML",
   ],
   authors: [{ name: "Joseph Elsayyid" }],
   openGraph: {
     title: "Joseph Elsayyid",
-    description: "Engineer. Yale EECS '26.",
+    description:
+      "Engineer working across AI hardware, edge ML, chip design, and institutional technology. Yale EECS and Yale SOM.",
     url: "https://josephelsayyid.com",
     siteName: "Joseph Elsayyid",
     locale: "en_US",
@@ -47,7 +52,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Joseph Elsayyid",
-    description: "Engineer. Yale EECS '26.",
+    description:
+      "Engineer working across AI hardware, edge ML, chip design, and institutional technology. Yale EECS and Yale SOM.",
   },
   robots: {
     index: true,
