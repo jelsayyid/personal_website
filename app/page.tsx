@@ -157,8 +157,8 @@ export default function Home() {
           <p className="max-w-md text-base text-text-secondary font-body leading-relaxed mb-10">
             Yale-trained engineer and technology leader focused on how advanced
             computing moves from labs into public institutions. My work spans
-            research, campus technology leadership, and cross-cultural diplomacy
-            across East Asia, Europe, and the Middle East.
+            research, institutional technology strategy, and cross-cultural
+            diplomacy across East Asia, Europe, and the Middle East.
           </p>
 
           <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs text-text-muted tracking-wider">
