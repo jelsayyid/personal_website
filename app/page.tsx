@@ -33,11 +33,11 @@ const EXPERIENCES = [
   },
   {
     org: "Martin Andraud Group, UCLouvain",
-    period: "May – Sept 2024",
+    period: "May – Aug 2024",
     location: "Belgium",
     description: [
       "22nm mixed-signal Compute-In-Memory accelerator.",
-      "Wrote RISC-V control firmware. Designed calibration routines that improved reliability by 25–45% across operating conditions.",
+      "Wrote C routines to extend the accelerator's compute capabilities and efficiency. Designed calibration routines that improved reliability by 25–45% across operating conditions.",
     ],
   },
   {
@@ -85,7 +85,7 @@ const YCC_INITIATIVES = [
 const DIPLOMATIC = [
   {
     title: "U.S. State Department NSLI-Y Scholar",
-    detail: "Taiwan, 2020\u20132022. Mandarin immersion.",
+    detail: "Taiwan, Dec 2021 \u2013 May 2022. Mandarin immersion.",
   },
   {
     title: "Congress-Bundestag Youth Exchange Scholar",
@@ -100,6 +100,25 @@ const DIPLOMATIC = [
     title: "Congressional Advisory Council Leader",
     detail:
       "NJ-7th District. Presented policy recommendations to Rep. Tom Malinowski.",
+  },
+];
+
+const AWARDS = [
+  {
+    title: "Congressional Commendation",
+    detail: "U.S. House of Representatives. National.",
+  },
+  {
+    title: "Kennedy-Lugar Youth Scholarship Finalist",
+    detail: "National.",
+  },
+  {
+    title: "Alan S. Tetelman 1958 Fellowship",
+    detail: "International research in the sciences.",
+  },
+  {
+    title: "ISA Award for Advanced Arabic Study",
+    detail: "Amman, Jordan.",
   },
 ];
 
@@ -304,8 +323,8 @@ export default function Home() {
               <p className="font-body text-base text-text-secondary leading-relaxed">
                 Before Yale, I was a U.S. State Department fellow in Taiwan, a
                 Congress-Bundestag scholar in Germany, and a youth ambassador in
-                Argentina and Chile. I speak English, Mandarin, Arabic, Spanish,
-                and French.
+                Argentina and Chile. I speak English, Mandarin, Arabic, and
+                Spanish at a professional level, with working French and German.
               </p>
             </ScrollReveal>
             </div>
@@ -319,9 +338,33 @@ export default function Home() {
                 <p className="font-body text-sm text-text-primary">
                   Yale University
                 </p>
-                <p className="font-body text-sm text-text-secondary">
+                <p className="font-body text-sm text-text-secondary mb-3">
                   B.S. Electrical Engineering & Computer Science, May 2026
                 </p>
+                <p className="font-body text-sm text-text-primary">
+                  Wenzao Ursuline University of Languages
+                </p>
+                <p className="font-body text-sm text-text-secondary">
+                  Chinese Studies, 2021–22
+                </p>
+              </div>
+
+              <div>
+                <span className="font-mono text-xs text-text-muted tracking-[0.2em] uppercase block mb-3">
+                  Honors & Awards
+                </span>
+                <div className="space-y-2">
+                  {AWARDS.map((award, i) => (
+                    <div key={i}>
+                      <p className="font-body text-sm text-text-primary">
+                        {award.title}
+                      </p>
+                      <p className="font-body text-sm text-text-secondary">
+                        {award.detail}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div>
