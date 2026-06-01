@@ -6,13 +6,22 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const EXPERIENCES = [
   {
+    org: "Yale Young Global Scholars, Yale University",
+    period: "Jun - Aug 2026",
+    location: "New Haven, CT",
+    description: [
+      "Instructor for Yale Young Global Scholars, teaching three interdisciplinary seminars on security engineering, embedded/edge software, device architecture, and health-data systems.",
+      "Designed active-learning sessions that translate advanced technical systems into accessible, high-stakes problems: attacker-modeling exercises, firmware/software trust-chain mapping, embedded-device architecture sprints, biological signal interpretation, and debates around privacy, regulation, and geopolitics.",
+    ],
+  },
+  {
     org: "Kuan Lab, Yale School of Medicine",
     period: "Jan 2026 - Present",
     location: "New Haven, CT",
     description: [
       "Data systems and analytics pipeline work for large-scale 3D medical imaging, built around post-segmentation analysis needs in the Kuan Lab.",
       "Designed modular ingestion, chunked HDF5/Zarr-style storage, graph construction, conservative validation checks, and diagnostics for inspecting accepted versus rejected connections.",
-      "Collaborated with lab stakeholders to keep the pipeline useful for downstream analysis and visualization rather than just technically complete.",
+      "Coordinated with Dr. Aaron Kuan and lab stakeholders to keep the pipeline useful for downstream analysis.",
     ],
   },
   {
