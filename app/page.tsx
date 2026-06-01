@@ -88,10 +88,9 @@ const PROJECTS = [
 ];
 
 const YCC_INITIATIVES = [
-  "Led student-administration working sessions on campus technology, privacy, and access issues.",
-  "Authored decision memos and briefing materials for non-technical stakeholders evaluating policy, governance, and rollout tradeoffs.",
-  "Advanced Clarity AI platform adoption and Anthropic Claude credit access for Yale labs.",
-  "Opened Yale CAS pathways to student developers and built an industry partnership channel through student government.",
+  "Chaired cross-campus technology committee uniting student founders, engineers, Yale's largest tech organizations, and research/industry leaders to turn student needs into shipped tools.",
+  "Launched builder programs spanning paid software bounties, hardware grants, speaker events, hackathons, and a $1,000 Innovation Prize funding pool to accelerate campus entrepreneurship.",
+  "Directed roadmap for Yale-facing technical infrastructure, prioritizing APIs and tools for dining, room availability, events, campus mapping, and CAS-authenticated application development.",
 ];
 
 const DIPLOMATIC = [
