@@ -11,7 +11,8 @@ const EXPERIENCES = [
     location: "New Haven, CT",
     description: [
       "Instructor for Yale Young Global Scholars, teaching three interdisciplinary seminars on security engineering, embedded/edge software, device architecture, and health-data systems.",
-      "Designed active-learning sessions that translate advanced technical systems into accessible, high-stakes problems: attacker-modeling exercises, firmware/software trust-chain mapping, embedded-device architecture sprints, biological signal interpretation, and debates around privacy, regulation, and geopolitics.",
+      "Building course-ready embedded systems prototypes and demonstrations that let students reason from sensing, firmware logic, and device constraints to real tradeoffs around reliability, power, privacy, and security.",
+      "Designed active-learning sessions that translate advanced technical systems into accessible, high-stakes problems: attacker-modeling exercises, firmware/software trust-chain mapping, device architecture sprints, biological signal interpretation, and debates around regulation and geopolitics.",
     ],
   },
   {
