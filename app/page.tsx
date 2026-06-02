@@ -89,7 +89,7 @@ const PROJECTS = [
 
 const YCC_INITIATIVES = [
   "Chaired cross-campus technology committee uniting student founders, engineers, Yale's largest tech organizations, and research/industry leaders to turn student needs into shipped tools.",
-  "Launched builder programs spanning paid software bounties, hardware grants, speaker events, hackathons, and a $1,000 Innovation Prize funding pool to accelerate campus entrepreneurship.",
+  "Launched builder programs spanning paid software bounties, hardware grants, speaker events, hackathons, and the YCC Innovation Prize to accelerate campus entrepreneurship.",
   "Directed roadmap for Yale-facing technical infrastructure, prioritizing APIs and tools for dining, room availability, events, campus mapping, and CAS-authenticated application development.",
 ];
 
