@@ -28,7 +28,7 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: "Joseph Elsayyid",
   description:
-    "Yale-trained engineer and technology leader focused on advanced computing, public institutions, and cross-cultural diplomacy.",
+    "Yale EECS engineer and Yale SOM candidate focused on technology leadership, product strategy, and venture-building. Professional proficiency in Mandarin, Arabic, and Spanish; conversant in French.",
   keywords: [
     "Joseph Elsayyid",
     "Yale",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Joseph Elsayyid",
     description:
-      "Yale-trained engineer and technology leader focused on advanced computing, public institutions, and cross-cultural diplomacy.",
+      "Yale EECS engineer and Yale SOM candidate focused on technology leadership, product strategy, and venture-building. Professional proficiency in Mandarin, Arabic, and Spanish; conversant in French.",
     url: "https://josephelsayyid.com",
     siteName: "Joseph Elsayyid",
     locale: "en_US",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Joseph Elsayyid",
     description:
-      "Yale-trained engineer and technology leader focused on advanced computing, public institutions, and cross-cultural diplomacy.",
+      "Yale EECS engineer and Yale SOM candidate focused on technology leadership, product strategy, and venture-building. Professional proficiency in Mandarin, Arabic, and Spanish; conversant in French.",
   },
   robots: {
     index: true,

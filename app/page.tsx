@@ -16,13 +16,13 @@ const EXPERIENCES = [
     ],
   },
   {
-    org: "Kuan Lab, Yale School of Medicine",
-    period: "Jan 2026 - Present",
+    org: "Yale College Council (YCC)",
+    period: "2024 - 2026",
     location: "New Haven, CT",
     description: [
-      "Data systems and analytics pipeline work for large-scale 3D medical imaging, built around post-segmentation analysis needs in the Kuan Lab.",
-      "Designed modular ingestion, chunked HDF5/Zarr-style storage, graph construction, conservative validation checks, and diagnostics for inspecting accepted versus rejected connections.",
-      "Coordinated with Dr. Aaron Kuan and lab stakeholders to keep the pipeline useful for downstream analysis.",
+      "Chaired cross-campus technology committee uniting Yale's largest tech organizations and research/industry leaders.",
+      "Launched builder programs spanning paid software bounties, hardware grants, speaker events, hackathons, and the YCC Innovation Prize to accelerate campus entrepreneurship.",
+      "Directed roadmap for Yale-facing technical infrastructure, prioritizing APIs and tools for dining, room availability, events, campus mapping, and CAS-authenticated application development.",
     ],
   },
   {
@@ -167,10 +167,9 @@ export default function Home() {
             </h1>
 
             <p className="max-w-md text-base text-text-secondary font-body leading-relaxed mb-10">
-              Yale-trained engineer and technology leader focused on how advanced
-              computing moves from labs into public institutions. My work spans
-              research, institutional technology strategy, and cross-cultural
-              diplomacy across East Asia, Europe, and the Middle East.
+              Yale EECS engineer and Yale SOM candidate focused on technology
+              leadership, product strategy, and venture-building. Professional
+              proficiency in Mandarin, Arabic, and Spanish; conversant in French.
             </p>
 
             <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs text-text-muted tracking-wider">
