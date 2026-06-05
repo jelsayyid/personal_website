@@ -10,19 +10,18 @@ const EXPERIENCES = [
     period: "Jun - Aug 2026",
     location: "New Haven, CT",
     description: [
-      "Instructor for Yale Young Global Scholars, teaching three interdisciplinary seminars on security engineering, embedded/edge software, device architecture, and health-data systems.",
-      "Building course-ready embedded systems prototypes and demonstrations that let students reason from sensing, firmware logic, and device constraints to real tradeoffs around reliability, power, privacy, and security.",
-      "Designed active-learning sessions that translate advanced technical systems into accessible, high-stakes problems: attacker-modeling exercises, firmware/software trust-chain mapping, device architecture sprints, biological signal interpretation, and debates around regulation and geopolitics.",
+      "Design and teach three intensive seminars to summer students on security engineering, embedded/edge software, device architecture, and health-data systems.",
+      "Build embedded-system prototypes linking sensing, firmware logic, and device constraints to reliability, power, and security.",
     ],
   },
   {
-    org: "Yale College Council (YCC)",
-    period: "2024 - 2026",
+    org: "Kuan Lab, Yale School of Medicine",
+    period: "Jan 2026 - Present",
     location: "New Haven, CT",
     description: [
-      "Chaired cross-campus technology committee uniting Yale's largest tech organizations and research/industry leaders.",
-      "Launched builder programs spanning paid software bounties, hardware grants, speaker events, hackathons, and the YCC Innovation Prize to accelerate campus entrepreneurship.",
-      "Directed roadmap for Yale-facing technical infrastructure, prioritizing APIs and tools for dining, room availability, events, campus mapping, and CAS-authenticated application development.",
+      "Data systems and analytics pipeline work for large-scale 3D medical imaging, built around post-segmentation analysis needs in the Kuan Lab.",
+      "Designed modular ingestion, chunked HDF5/Zarr-style storage, graph construction, conservative validation checks, and diagnostics for inspecting accepted versus rejected connections.",
+      "Coordinated with Dr. Aaron Kuan and lab stakeholders to keep the pipeline useful for downstream analysis.",
     ],
   },
   {
