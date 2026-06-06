@@ -235,10 +235,10 @@ export default function Home() {
                       <a
                         href={exp.href}
                         target="_blank"
-                        rel="noopener noreferrer"
-                        className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
-                      >
-                        {exp.linkLabel} <span aria-hidden="true">↗</span>
+                      rel="noopener noreferrer"
+                      className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
+                    >
+                        {exp.linkLabel}
                       </a>
                     ) : null}
                   </div>
@@ -317,7 +317,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
                 >
-                  Website <span aria-hidden="true">↗</span>
+                  Website
                 </a>
               </div>
               <ul className="space-y-2">
@@ -345,7 +345,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
                 >
-                  Committee <span aria-hidden="true">↗</span>
+                  Committee
                 </a>
               </div>
               <p className="font-body text-sm text-text-secondary leading-relaxed">
