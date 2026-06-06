@@ -18,6 +18,7 @@ const EXPERIENCES = [
     org: "Kuan Lab, Yale School of Medicine",
     period: "Jan 2026 - Present",
     location: "New Haven, CT",
+    href: "https://github.com/jelsayyid/postseg-connectomics",
     description: [
       "Data systems and analytics pipeline work for large-scale 3D medical imaging, built around post-segmentation analysis needs in the Kuan Lab.",
       "Designed modular ingestion, chunked HDF5/Zarr-style storage, graph construction, conservative validation checks, and diagnostics for inspecting accepted versus rejected connections.",
@@ -226,7 +227,18 @@ export default function Home() {
               >
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-1">
                   <h3 className="font-display text-xl text-text-primary">
-                    {exp.org}
+                    {"href" in exp ? (
+                      <a
+                        href={exp.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors duration-300 hover:text-accent"
+                      >
+                        {exp.org}
+                      </a>
+                    ) : (
+                      exp.org
+                    )}
                   </h3>
                   <span className="font-mono text-xs text-text-muted tracking-wider shrink-0">
                     {exp.period}
@@ -294,7 +306,14 @@ export default function Home() {
           <ScrollReveal>
             <div className="mb-12">
               <h3 className="font-display text-xl text-text-primary mb-4">
-                YCC Tech Division Chair
+                <a
+                  href="https://ycctech.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors duration-300 hover:text-accent"
+                >
+                  YCC Tech Division Chair
+                </a>
               </h3>
               <ul className="space-y-2">
                 {YCC_INITIATIVES.map((item, i) => (
@@ -312,7 +331,14 @@ export default function Home() {
           <ScrollReveal delay={0.05}>
             <div className="mb-12 pb-12 border-b border-border">
               <h3 className="font-display text-xl text-text-primary mb-2">
-                Student Advisory, Yale College
+                <a
+                  href="https://science.yalecollege.yale.edu/academics-and-tutoring/student-advisory-committee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors duration-300 hover:text-accent"
+                >
+                  Student Advisory, Yale College
+                </a>
               </h3>
               <p className="font-body text-sm text-text-secondary leading-relaxed">
                 Competitively selected to advise Yale College on Science &
