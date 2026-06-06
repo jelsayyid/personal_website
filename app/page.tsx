@@ -19,6 +19,7 @@ const EXPERIENCES = [
     period: "Jan 2026 - Present",
     location: "New Haven, CT",
     href: "https://github.com/jelsayyid/postseg-connectomics",
+    linkLabel: "GitHub",
     description: [
       "Data systems and analytics pipeline work for large-scale 3D medical imaging, built around post-segmentation analysis needs in the Kuan Lab.",
       "Designed modular ingestion, chunked HDF5/Zarr-style storage, graph construction, conservative validation checks, and diagnostics for inspecting accepted versus rejected connections.",
@@ -226,20 +227,21 @@ export default function Home() {
                 }`}
               >
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-1">
-                  <h3 className="font-display text-xl text-text-primary">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h3 className="font-display text-xl text-text-primary">
+                      {exp.org}
+                    </h3>
                     {"href" in exp ? (
                       <a
                         href={exp.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="transition-colors duration-300 hover:text-accent"
+                        className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
                       >
-                        {exp.org}
+                        {exp.linkLabel} <span aria-hidden="true">↗</span>
                       </a>
-                    ) : (
-                      exp.org
-                    )}
-                  </h3>
+                    ) : null}
+                  </div>
                   <span className="font-mono text-xs text-text-muted tracking-wider shrink-0">
                     {exp.period}
                   </span>
@@ -305,16 +307,19 @@ export default function Home() {
 
           <ScrollReveal>
             <div className="mb-12">
-              <h3 className="font-display text-xl text-text-primary mb-4">
+              <div className="mb-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 className="font-display text-xl text-text-primary">
+                  YCC Tech Division Chair
+                </h3>
                 <a
                   href="https://ycctech.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors duration-300 hover:text-accent"
+                  className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
                 >
-                  YCC Tech Division Chair
+                  Website <span aria-hidden="true">↗</span>
                 </a>
-              </h3>
+              </div>
               <ul className="space-y-2">
                 {YCC_INITIATIVES.map((item, i) => (
                   <li
@@ -330,16 +335,19 @@ export default function Home() {
 
           <ScrollReveal delay={0.05}>
             <div className="mb-12 pb-12 border-b border-border">
-              <h3 className="font-display text-xl text-text-primary mb-2">
+              <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 className="font-display text-xl text-text-primary">
+                  Student Advisory, Yale College
+                </h3>
                 <a
                   href="https://science.yalecollege.yale.edu/academics-and-tutoring/student-advisory-committee"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors duration-300 hover:text-accent"
+                  className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
                 >
-                  Student Advisory, Yale College
+                  Committee <span aria-hidden="true">↗</span>
                 </a>
-              </h3>
+              </div>
               <p className="font-body text-sm text-text-secondary leading-relaxed">
                 Competitively selected to advise Yale College on Science &
                 Quantitative Reasoning resource allocation priorities under
