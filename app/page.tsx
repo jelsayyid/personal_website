@@ -66,6 +66,15 @@ const EXPERIENCES = [
 
 const PROJECTS = [
   {
+    title: "EdgePulse",
+    href: "https://github.com/jelsayyid/edgepulse.git",
+    linkLabel: "GitHub",
+    description: [
+      "Built an embedded testbed for adaptive physiological sensing using an Arduino Nano 33 BLE Sense Rev2 and its BMI270/BMM150 IMU.",
+      "Implemented roughly 50 Hz timestamped accelerometer and gyroscope streaming over USB serial with Python tools for CSV capture, plotting, and motion labeling; developed an initial synchronized MAX30102 pulse and IMU logger for hardware validation.",
+    ],
+  },
+  {
     title: "Automated Composting System",
     description: [
       "Led hardware-software product design for a smart composter prototype intended for Yale's fourteen residential dining halls.",
@@ -279,9 +288,21 @@ export default function Home() {
                   i < PROJECTS.length - 1 ? "border-b border-border" : ""
                 }`}
               >
-                <h3 className="font-display text-xl text-text-primary mb-3">
-                  {project.title}
-                </h3>
+                <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 className="font-display text-xl text-text-primary">
+                    {project.title}
+                  </h3>
+                  {"href" in project ? (
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
+                    >
+                      {project.linkLabel}
+                    </a>
+                  ) : null}
+                </div>
                 {project.description.map((para, j) => (
                   <p
                     key={j}
