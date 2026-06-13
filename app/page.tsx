@@ -105,6 +105,11 @@ const YCC_INITIATIVES = [
 
 const DIPLOMATIC = [
   {
+    title: "Peace & Dialogue Leadership Initiative (PDLI) Fellow",
+    detail:
+      "Yale & West Point, Nov 2024 - May 2025. Selected for a joint fellowship examining Israeli-Palestinian relations, U.S. Middle East policy, and civil-military leadership through seminars and field engagement with senior political, diplomatic, academic, business, and military leaders in Israel and the Palestinian Territories. Designed a computational text-analysis capstone to detect and quantify framing bias in written material.",
+  },
+  {
     title: "U.S. State Department NSLI-Y Scholar",
     detail:
       "Taiwan, Dec 2021 - May 2022. One of 13 scholars selected for a funded Mandarin and cultural study fellowship at Wenzao Ursuline University; conducted Mandarin-language youth surveys on Taiwanese cultural and political identity.",
