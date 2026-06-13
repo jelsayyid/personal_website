@@ -107,7 +107,7 @@ const DIPLOMATIC = [
   {
     title: "Peace & Dialogue Leadership Initiative (PDLI) Fellow",
     detail:
-      "Israel & Palestinian Territories, Nov 2024 - May 2025. Selected as one of approximately 30 Yale and West Point fellows for a leadership initiative focused on Israeli-Palestinian relations, U.S. Middle East policy, peacebuilding, and civil-military relations; joined an intensive regional field delegation and engaged senior political, diplomatic, academic, business, and military leaders across the region. Built a computational text-analysis tool to surface and quantify framing bias in written narratives.",
+      "Israel & Palestinian Territories, Nov 2024 - May 2025. Selected as one of approximately 30 fellows for a leadership initiative with West Point focused on security, U.S. Middle East policy, peacebuilding, and civil-military relations; joined an intensive regional field delegation and engaged senior political, diplomatic, academic, business, and military leaders across the region. Built a computational text-analysis tool to surface and quantify framing bias in written narratives.",
   },
   {
     title: "U.S. State Department NSLI-Y Scholar",
