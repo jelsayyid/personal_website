@@ -10,7 +10,7 @@ const EXPERIENCES = [
     period: "Jun - Aug 2026",
     location: "New Haven, CT",
     description: [
-      "Design and teach three intensive seminars to summer students on security engineering, embedded/edge software, device architecture, and health-data systems.",
+      "Design and teach three intensive seminars for Yale Young Global Scholars, a globally selective program drawing students from 159 countries, on security engineering, embedded/edge software, device architecture, and health-data systems.",
       "Build embedded-system prototypes linking sensing, firmware logic, and device constraints to reliability, power, and security.",
     ],
   },
@@ -460,6 +460,23 @@ export default function Home() {
                 </p>
                 <p className="font-body text-sm text-text-secondary">
                   Chinese Studies, 2021-22
+                </p>
+              </div>
+
+              <div>
+                <span className="font-mono text-xs text-text-muted tracking-[0.2em] uppercase block mb-3">
+                  Selected Writing
+                </span>
+                <a
+                  href="https://yaledailynews.com/articles/yale-quantum-institute-marks-ten-years"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-b border-accent/60 pb-px font-body text-sm text-text-primary transition-colors duration-300 hover:border-text-primary hover:text-accent"
+                >
+                  Yale Quantum Institute marks ten years
+                </a>
+                <p className="mt-2 font-body text-sm text-text-secondary">
+                  Yale Daily News, February 6, 2025
                 </p>
               </div>
 
