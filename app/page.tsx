@@ -106,33 +106,39 @@ const YCC_INITIATIVES = [
 const DIPLOMATIC = [
   {
     title: "Peace & Dialogue Leadership Initiative (PDLI) Fellow",
+    meta: "Israel & Palestinian Territories, Nov 2024 - May 2025",
     detail:
-      "Israel & Palestinian Territories, Nov 2024 - May 2025. Selected as one of approximately 30 fellows for a leadership initiative with West Point focused on security, U.S. Middle East policy, peacebuilding, and civil-military relations; joined an intensive regional field delegation and engaged senior political, diplomatic, academic, business, and military leaders across the region. Built a computational text-analysis tool to surface and quantify framing bias in written narratives.",
+      "Selected as one of approximately 30 fellows for a leadership initiative with West Point focused on security, U.S. Middle East policy, peacebuilding, and civil-military relations; joined an intensive regional field delegation and engaged senior political, diplomatic, academic, business, and military leaders across the region. Built a computational text-analysis tool to surface and quantify framing bias in written narratives.",
   },
   {
     title: "U.S. State Department NSLI-Y Scholar",
+    meta: "Taiwan, Dec 2021 - May 2022",
     detail:
-      "Taiwan, Dec 2021 - May 2022. One of 13 scholars selected for a funded Mandarin and cultural study fellowship at Wenzao Ursuline University; conducted Mandarin-language youth surveys on Taiwanese cultural and political identity.",
+      "One of 13 scholars selected for a funded Mandarin and cultural study fellowship at Wenzao Ursuline University; conducted Mandarin-language youth surveys on Taiwanese cultural and political identity.",
   },
   {
     title: "Congress-Bundestag Youth Exchange Scholar",
+    meta: "Germany, Aug 2021 - Dec 2021",
     detail:
-      "Germany, Aug 2021 - Dec 2021. Selected for the U.S.-German bilateral fellowship with study, government-sponsored training, diplomatic activity, and research on innovation policy and European technology ecosystems.",
+      "Selected for the U.S.-German bilateral fellowship with study, government-sponsored training, diplomatic activity, and research on innovation policy and European technology ecosystems.",
   },
   {
     title: "U.S. Consulate Hamburg Youth Council",
+    meta: "Germany, Jan 2022 - May 2022",
     detail:
-      "Germany, Jan 2022 - May 2022. American council member in Consul General Darion Akins's youth council, working with American and German scholars during the early months of the Ukraine crisis.",
+      "American council member in Consul General Darion Akins's youth council, working with American and German scholars during the early months of the Ukraine crisis.",
   },
   {
     title: "U.S. Youth Ambassador",
+    meta: "Argentina & Chile, Jun 2020 - Jun 2021",
     detail:
-      "Argentina & Chile, Jun 2020 - Jun 2021. One of 48 students nationwide selected by the State Department's Bureau of Educational and Cultural Affairs; led community projects and later served as an Alumni Ambassador for program outreach.",
+      "One of 48 students nationwide selected by the State Department's Bureau of Educational and Cultural Affairs; led community projects and later served as an Alumni Ambassador for program outreach.",
   },
   {
     title: "Congressional Advisory Council Leader",
+    meta: "NJ-7th District, Nov 2019 - Jul 2022",
     detail:
-      "NJ-7th District, Nov 2019 - Jul 2022. Led a 12-member youth policy team on energy, foreign affairs, and technology recommendations presented directly to Rep. Tom Malinowski.",
+      "Led a 12-member youth policy team on energy, foreign affairs, and technology recommendations presented directly to Rep. Tom Malinowski.",
   },
 ];
 
@@ -397,6 +403,9 @@ export default function Home() {
                   <h3 className="font-display text-lg text-text-primary mb-1">
                     {exp.title}
                   </h3>
+                  <p className="mb-2 font-mono text-xs tracking-wider text-text-muted">
+                    {exp.meta}
+                  </p>
                   <p className="font-body text-sm text-text-secondary">
                     {exp.detail}
                   </p>
