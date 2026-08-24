@@ -146,6 +146,44 @@ const GLOBAL_EXPERIENCE = [
   },
 ];
 
+const ARTICLES = [
+  {
+    title: "Yale Quantum Institute marks ten years",
+    meta: "By Joseph Elsayyid, Yale Daily News, February 5, 2025",
+    href: "https://yaledailynews.com/articles/yale-quantum-institute-marks-ten-years",
+  },
+  {
+    title: "YCC Senate passes bill to establish tech working committee",
+    meta: "Featured in Yale Daily News, September 8, 2025",
+    href: "https://yaledailynews.com/articles/ycc-senate-passes-bill-to-establish-tech-working-committee",
+  },
+  {
+    title: "YCC pushes for MENA Cultural Center",
+    meta: "Featured in Yale Daily News, March 26, 2025",
+    href: "https://yaledailynews.com/articles/ycc-pushes-for-mena-cultural-center",
+  },
+  {
+    title: "YCC passes proposal for Yale Police oversight board",
+    meta: "Featured in Yale Daily News, February 4, 2025",
+    href: "https://yaledailynews.com/articles/ycc-passes-proposal-for-yale-police-oversight-board-citing-concerning-surveillance-of-pro-palestinian-protesters",
+  },
+  {
+    title: "Students teach workshop on how to use Anthropic’s AI tools",
+    meta: "Featured in Yale Daily News, April 10, 2026",
+    href: "https://yaledailynews.com/articles/students-teach-workshop-on-how-to-use-anthropic-s-ai-tools",
+  },
+  {
+    title: "YCC Senate approves second stipend fund for Adobe licenses",
+    meta: "Featured in Yale Daily News, January 27, 2026",
+    href: "https://yaledailynews.com/articles/ycc-senate-approves-second-stipend-fund-for-adobe-licenses",
+  },
+  {
+    title: "YCC pushes for non-English courses to fulfill writing requirement",
+    meta: "Featured in Yale Daily News, January 29, 2025",
+    href: "https://yaledailynews.com/articles/ycc-pushes-for-non-english-courses-to-fulfill-writing-requirement",
+  },
+];
+
 const EDUCATION = [
   {
     school: "Yale School of Management",
@@ -317,16 +355,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="page-shell section-block" id="writing" aria-labelledby="writing-title">
-        <SectionHeading id="writing-title">Selected Writing</SectionHeading>
-        <article className="entry writing-entry">
-          <h3>
-            <ExternalLink href="https://yaledailynews.com/articles/yale-quantum-institute-marks-ten-years">
-              Yale Quantum Institute Marks Ten Years
-            </ExternalLink>
-          </h3>
-          <p className="entry-meta">Yale Daily News, February 6, 2025</p>
-        </article>
+      <section className="page-shell section-block" id="articles" aria-labelledby="articles-title">
+        <SectionHeading id="articles-title">Featured Articles</SectionHeading>
+        <div className="article-list">
+          {ARTICLES.map((article) => (
+            <article className="article-entry" key={article.href}>
+              <h3>
+                <ExternalLink href={article.href}>{article.title}</ExternalLink>
+              </h3>
+              <p>{article.meta}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="page-shell section-block" id="about" aria-labelledby="about-title">

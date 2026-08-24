@@ -1,7 +1,6 @@
 :root {
   --background: #ffffff;
   --text: #151515;
-  --muted: #606060;
   --line: #d9d9d9;
   --page-width: 1120px;
 }
@@ -12,7 +11,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: 76px;
 }
 
 body {
@@ -21,7 +20,7 @@ body {
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.5;
   text-rendering: optimizeLegibility;
 }
 
@@ -32,7 +31,7 @@ a {
 }
 
 a:hover {
-  color: var(--muted);
+  color: var(--text);
 }
 
 button,
@@ -63,7 +62,7 @@ a:focus-visible {
 
 .nav-inner {
   display: flex;
-  min-height: 68px;
+  min-height: 62px;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
@@ -82,7 +81,7 @@ a:focus-visible {
 }
 
 .nav-links a {
-  color: var(--muted);
+  color: var(--text);
   font-size: 14px;
   text-decoration: none;
 }
@@ -106,7 +105,7 @@ a:focus-visible {
   grid-template-columns: minmax(0, 1fr) 280px;
   align-items: center;
   gap: clamp(56px, 8vw, 96px);
-  padding-block: 112px;
+  padding-block: 88px;
 }
 
 .hero-copy {
@@ -131,21 +130,21 @@ h2 {
 h1 {
   max-width: 800px;
   margin-bottom: 32px;
-  font-size: clamp(42px, 4.6vw, 62px);
+  font-size: clamp(40px, 4.2vw, 58px);
   line-height: 1.08;
 }
 
 .hero-intro {
   max-width: 680px;
   margin-bottom: 20px;
-  font-size: clamp(19px, 2.1vw, 25px);
-  line-height: 1.5;
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.45;
 }
 
 .hero-background {
   max-width: 680px;
   margin-bottom: 28px;
-  color: var(--muted);
+  color: var(--text);
 }
 
 .plain-links {
@@ -172,30 +171,29 @@ h1 {
 }
 
 .section-block {
-  padding-block: 96px;
+  padding-block: 72px;
   border-top: 1px solid var(--line);
 }
 
 .section-block > h2 {
-  margin-bottom: 56px;
-  font-size: clamp(32px, 4vw, 48px);
+  margin-bottom: 38px;
+  font-size: clamp(30px, 3.5vw, 42px);
   line-height: 1.12;
 }
 
 .section-intro {
-  max-width: 760px;
-  margin-top: -28px;
-  margin-bottom: 56px;
-  color: var(--muted);
-  font-size: 18px;
+  max-width: 900px;
+  margin-top: -16px;
+  margin-bottom: 38px;
+  font-size: 17px;
 }
 
 .entry-list {
-  max-width: 860px;
+  max-width: 960px;
 }
 
 .entry {
-  padding-block: 38px;
+  padding-block: 26px;
   border-top: 1px solid var(--line);
 }
 
@@ -211,23 +209,22 @@ h1 {
 .entry h3,
 .languages h3,
 .credentials h3 {
-  margin-bottom: 6px;
-  font-size: 22px;
+  margin-bottom: 4px;
+  font-size: 20px;
   line-height: 1.3;
 }
 
 .entry p {
-  max-width: 780px;
-  margin-bottom: 14px;
+  max-width: 900px;
+  margin-bottom: 9px;
 }
 
 .entry p:last-of-type {
-  margin-bottom: 16px;
+  margin-bottom: 11px;
 }
 
 .entry-meta {
-  color: var(--muted);
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .entry-lead {
@@ -236,15 +233,15 @@ h1 {
 
 .entry-featured h3 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(28px, 3vw, 38px);
+  font-size: clamp(26px, 2.7vw, 34px);
   font-weight: 400;
   letter-spacing: -0.02em;
 }
 
 .languages {
-  max-width: 860px;
-  margin-top: 56px;
-  padding-top: 38px;
+  max-width: 960px;
+  margin-top: 38px;
+  padding-top: 26px;
   border-top: 1px solid var(--line);
 }
 
@@ -252,14 +249,33 @@ h1 {
   margin-bottom: 0;
 }
 
-.writing-entry h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(26px, 3vw, 36px);
-  font-weight: 400;
+.article-list {
+  max-width: 960px;
 }
 
-.writing-entry h3 a {
-  font-weight: inherit;
+.article-entry {
+  padding-block: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.article-entry:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.article-entry:last-child {
+  padding-bottom: 0;
+}
+
+.article-entry h3 {
+  margin-bottom: 2px;
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.article-entry p {
+  margin-bottom: 0;
+  font-size: 14px;
 }
 
 .about-copy {
@@ -267,34 +283,34 @@ h1 {
 }
 
 .about-copy p {
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .about-copy .about-lead {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(28px, 3.3vw, 42px);
+  font-size: clamp(26px, 3vw, 38px);
   line-height: 1.25;
 }
 
 .credentials {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  margin-top: 72px;
-  padding-top: 56px;
+  gap: 64px;
+  margin-top: 56px;
+  padding-top: 42px;
   border-top: 1px solid var(--line);
 }
 
 .credentials > section > h3 {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 30px;
+  font-size: 27px;
   font-weight: 400;
 }
 
 .credential,
 .honors-list p {
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .credential h4 {
@@ -306,12 +322,12 @@ h1 {
 .honors-list p {
   margin-top: 0;
   margin-bottom: 2px;
-  color: var(--muted);
+  color: var(--text);
 }
 
 .contact-section p {
   max-width: 700px;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .contact-section .plain-links {
@@ -324,11 +340,10 @@ h1 {
 
 .footer-inner {
   display: flex;
-  min-height: 96px;
+  min-height: 80px;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  color: var(--muted);
   font-size: 14px;
 }
 
@@ -348,14 +363,14 @@ h1 {
 
   .nav-links {
     position: absolute;
-    top: 69px;
+    top: 63px;
     right: 0;
     left: 0;
     display: none;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    min-height: calc(100vh - 69px);
+    min-height: calc(100vh - 63px);
     padding: 24px;
     background: var(--background);
   }
@@ -375,8 +390,8 @@ h1 {
   .hero {
     grid-template-columns: 1fr;
     min-height: 0;
-    gap: 56px;
-    padding-block: 80px;
+    gap: 48px;
+    padding-block: 64px;
   }
 
   .portrait-wrap {
@@ -397,12 +412,12 @@ h1 {
   }
 
   .hero {
-    gap: 44px;
-    padding-block: 64px;
+    gap: 38px;
+    padding-block: 52px;
   }
 
   h1 {
-    font-size: 43px;
+    font-size: 39px;
   }
 
   .hero-intro {
@@ -410,22 +425,22 @@ h1 {
   }
 
   .section-block {
-    padding-block: 72px;
+    padding-block: 56px;
   }
 
-  .section-block > h2 {
-    margin-bottom: 44px;
-    font-size: 34px;
+.section-block > h2 {
+    margin-bottom: 32px;
+    font-size: 32px;
   }
 
   .section-intro {
-    margin-top: -20px;
-    margin-bottom: 44px;
+    margin-top: -12px;
+    margin-bottom: 32px;
     font-size: 16px;
   }
 
   .entry {
-    padding-block: 32px;
+    padding-block: 24px;
   }
 
   .entry h3 {
@@ -437,9 +452,9 @@ h1 {
   }
 
   .credentials {
-    gap: 44px;
-    margin-top: 56px;
-    padding-top: 44px;
+    gap: 38px;
+    margin-top: 44px;
+    padding-top: 34px;
   }
 
   .footer-inner {
