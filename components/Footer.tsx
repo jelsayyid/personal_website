@@ -1,13 +1,15 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-border">
-      <div className="page-section py-8">
-        <a
-          href="mailto:elsayyidjoseph@gmail.com"
-          className="font-mono text-[10px] text-text-muted tracking-wider hover:text-text-secondary transition-colors duration-300"
-        >
-          elsayyidjoseph@gmail.com
-        </a>
+    <footer className="site-footer">
+      <div className="footer-inner">
+        <p>© {new Date().getFullYear()} Joseph Elsayyid</p>
+        <div className="footer-links">
+          <a href="mailto:elsayyidjoseph@gmail.com">Email</a>
+          <a href="https://github.com/jelsayyid" target="_blank" rel="noreferrer">
+            GitHub ↗
+          </a>
+          <a href="#top">Back to top ↑</a>
+        </div>
       </div>
     </footer>
   );

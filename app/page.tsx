@@ -1,538 +1,522 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
-import ScrollReveal from "@/components/ScrollReveal";
 
-const EXPERIENCES = [
+type Link = {
+  href: string;
+  label: string;
+};
+
+type WorkItem = {
+  institution: string;
+  role: string;
+  period: string;
+  location: string;
+  summary: string;
+  detail: string;
+  tags: string[];
+  link?: Link;
+};
+
+const WORK: WorkItem[] = [
   {
-    org: "Yale Young Global Scholars, Yale University",
-    period: "Jun - Aug 2026",
+    institution: "Yale Young Global Scholars, Yale University",
+    role: "Course Instructor",
+    period: "Summer 2026",
     location: "New Haven, CT",
-    description: [
-      "Design and teach three intensive seminars for Yale Young Global Scholars, a globally selective program drawing students from 159 countries, on security engineering, embedded/edge software, device architecture, and health-data systems.",
-      "Build embedded-system prototypes linking sensing, firmware logic, and device constraints to reliability, power, and security.",
-    ],
+    summary:
+      "Designed and taught three original seminars for students from 159 countries, connecting technical systems to security and international competition.",
+    detail:
+      "The central unit, “Chip Cold War,” examined Taiwan’s role in advanced-chip production, semiconductor supply chains, export controls, technological dependence, and U.S.–China competition. Other sessions addressed cyber conflict, advanced computing, and national security.",
+    tags: ["Semiconductors", "Technology security", "Teaching"],
   },
   {
-    org: "Kuan Lab, Yale School of Medicine",
-    period: "Jan 2026 - Present",
+    institution: "Kuan Lab, Yale School of Medicine",
+    role: "Research · Medical imaging data systems",
+    period: "Jan 2026 — Present",
     location: "New Haven, CT",
-    href: "https://github.com/jelsayyid/postseg-connectomics",
-    linkLabel: "GitHub",
-    description: [
-      "Data systems and analytics pipeline work for large-scale 3D medical imaging, built around post-segmentation analysis needs in the Kuan Lab.",
-      "Designed modular ingestion, chunked HDF5/Zarr-style storage, graph construction, conservative validation checks, and diagnostics for inspecting accepted versus rejected connections.",
-      "Coordinated with Dr. Aaron Kuan and lab stakeholders to keep the pipeline useful for downstream analysis.",
-    ],
+    summary:
+      "Built data infrastructure for large-scale 3D brain-imaging analysis at Yale School of Medicine.",
+    detail:
+      "Developed modular ingestion, chunked HDF5/Zarr-style storage, graph construction, validation, and diagnostics for post-segmentation workflows—turning large imaging outputs into data that can be checked, queried, and used in downstream analysis.",
+    tags: ["Python", "HDF5 / Zarr", "Graph analysis"],
+    link: {
+      href: "https://github.com/jelsayyid/postseg-connectomics",
+      label: "View repository",
+    },
   },
   {
-    org: "Spintronic Quantum Material Laboratory",
-    period: "May - Aug 2025",
+    institution: "HKUST · Spintronic Quantum Material Laboratory",
+    role: "AI Hardware–Software Research Intern",
+    period: "Summer 2025",
     location: "Hong Kong",
-    description: [
-      "AI hardware-software research on a next-generation MTJ-based in-memory accelerator, translating device and system constraints into software requirements.",
-      "Built validation pipelines benchmarking power, latency, throughput, and bottlenecks so the hardware team could reason about feasible use cases and performance guarantees.",
-    ],
+    summary:
+      "Worked on hardware–software co-design for a 28 nm MTJ compute-in-memory AI accelerator.",
+    detail:
+      "Analyzed latency, throughput, and energy while testing pruning, quantization, and sparsity strategies. Translated device constraints into system-level software requirements and feasible performance targets.",
+    tags: ["Compute-in-memory", "MTJ", "Model compression"],
   },
   {
-    org: "Yale Intelligent Computing Lab",
-    period: "Sept 2024 - Sept 2025",
+    institution: "Yale Intelligent Computing Lab",
+    role: "AI Systems Design Intern",
+    period: "2024 — 2025",
     location: "New Haven, CT",
-    description: [
-      "Developed reproducible deployment pipelines for transformer models on Raspberry Pi and embedded Linux platforms.",
-      "Created Python profiling frameworks and dashboards to compare latency, memory footprint, power draw, and accuracy across pruning, quantization, and model-design choices.",
-    ],
+    summary:
+      "Developed transformer deployment and profiling workflows for embedded Linux and Raspberry Pi systems.",
+    detail:
+      "Measured latency, memory, power, and accuracy across pruning, quantization, and model-design choices. Extended the same performance analysis to real-time, pruned and quantized ResNet18 inference on constrained hardware.",
+    tags: ["Embedded Linux", "Transformers", "Performance profiling"],
   },
   {
-    org: "Martin Andraud Group, UCLouvain",
-    period: "May - Sept 2024",
+    institution: "UCLouvain · Martin Andraud Group",
+    role: "Software–Hardware Co-Design Intern",
+    period: "Summer 2024",
     location: "Louvain-la-Neuve, Belgium",
-    description: [
-      "Software-hardware co-design work on a 22nm mixed-signal Compute-In-Memory accelerator, bridging RISC-V control firmware with circuit-level behavior.",
-      "Integrated calibration and control routines that improved compute reliability by 25-45% across operating conditions and translated results for hardware, firmware, and algorithm collaborators.",
-    ],
+    summary:
+      "Contributed to a 22 nm mixed-signal compute-in-memory accelerator in a European semiconductor research environment.",
+    detail:
+      "Connected RISC-V control and calibration software to circuit-level behavior, improving compute reliability by 25–45% across operating conditions and aligning hardware, firmware, and algorithm requirements.",
+    tags: ["22 nm CIM", "RISC-V", "Calibration"],
   },
   {
-    org: "FutureTEC",
-    period: "Jul - Aug 2023",
+    institution: "FutureTEC",
+    role: "Cybersecurity Intern",
+    period: "Summer 2023",
     location: "Amman, Jordan",
-    description: [
-      "Security operations internship with a cyber defense team, using SIEM tools to analyze live alerts generated by applications and network hardware.",
-      "Supported incident-response recommendations, log correlation, and cross-cultural technical communication in Arabic.",
-    ],
+    summary:
+      "Monitored security events with SIEM tools, correlated application and network logs, and supported incident analysis for a cyber defense team.",
+    detail:
+      "The role combined operational security work with Arabic-language and cross-cultural technical communication.",
+    tags: ["SIEM", "Incident analysis", "Cyber defense"],
   },
 ];
 
 const PROJECTS = [
   {
-    title: "EdgePulse",
-    href: "https://github.com/jelsayyid/edgepulse.git",
-    linkLabel: "GitHub",
-    description: [
-      "Built an embedded testbed for adaptive physiological sensing using an Arduino Nano 33 BLE Sense Rev2 and its BMI270/BMM150 IMU.",
-      "Implemented roughly 50 Hz timestamped accelerometer and gyroscope streaming over USB serial with Python tools for CSV capture, plotting, and motion labeling; developed an initial synchronized MAX30102 pulse and IMU logger for hardware validation.",
-    ],
-  },
-  {
+    number: "01",
     title: "Automated Composting System",
-    description: [
-      "Led hardware-software product design for a smart composter prototype intended for Yale's fourteen residential dining halls.",
-      "Developed microcontroller software for temperature, humidity, and CO2 sensor readings, modular drivers, and closed-loop actuator control to stabilize the composting environment in real time.",
-    ],
+    eyebrow: "Hardware–software product design",
+    detail:
+      "Designed a smart-composter prototype for Yale’s 14 residential dining halls. Integrated temperature, humidity, and CO₂ sensors with actuators and microcontroller software for closed-loop environmental control in a real deployment context.",
   },
   {
-    title: "Real-Time ResNet18 on Raspberry Pi",
-    description: [
-      "Pruned and quantized ResNet18 for real-time computer vision inference on a Raspberry Pi.",
-      "Built evaluation tools and roofline analyses to identify compute-bound versus memory-bound layers and tune power, latency, and user-experience tradeoffs on constrained hardware.",
-    ],
+    number: "02",
+    title: "GPT-Lite · NanoGPT FPGA Optimization",
+    eyebrow: "Accelerator mapping and model optimization",
+    detail:
+      "Mapped transformer inference to FPGA fabric and built a software-led workflow for refactoring, quantization, and profiling under tight compute and memory constraints. The source project retained 99% of baseline accuracy.",
   },
   {
-    title: "GPT-Lite FPGA Optimization",
-    description: [
-      "Took NanoGPT and mapped it onto FPGA fabric, a fundamentally different compute paradigm than the GPU training pipelines the model was designed for.",
-      "Designed a software-driven optimization workflow with model refactoring, quantization, and profiling that reduced compute and memory footprint while preserving 99% of baseline accuracy.",
-    ],
+    number: "03",
+    title: "EdgePulse",
+    eyebrow: "Embedded physiological sensing",
+    detail:
+      "Built a sensing testbed around the Arduino Nano 33 BLE Sense Rev2, using its IMU for synchronized motion capture and Python tools for recording, visualization, and analysis.",
+    link: {
+      href: "https://github.com/jelsayyid/edgepulse",
+      label: "View repository",
+    },
   },
 ];
 
-const YCC_INITIATIVES = [
-  "Chaired cross-campus technology committee uniting student founders, engineers, Yale's largest tech organizations, and research/industry leaders to turn student needs into shipped tools.",
-  "Launched builder programs spanning paid software bounties, hardware grants, speaker events, hackathons, and the YCC Innovation Prize to accelerate campus entrepreneurship.",
-  "Directed roadmap for Yale-facing technical infrastructure, prioritizing APIs and tools for dining, room availability, events, campus mapping, and CAS-authenticated application development.",
-];
-
-const DIPLOMATIC = [
+const GLOBAL_EXPERIENCE = [
   {
-    title: "Peace & Dialogue Leadership Initiative (PDLI) Fellow",
-    meta: "Israel & Palestinian Territories, Nov 2024 - May 2025",
+    title: "Peace & Dialogue Leadership Initiative",
+    meta: "Fellow · Israel & Palestinian Territories · 2024–2025",
     detail:
-      "Selected as one of approximately 30 fellows for a leadership initiative with West Point focused on security, U.S. Middle East policy, peacebuilding, and civil-military relations; joined an intensive regional field delegation and engaged senior political, diplomatic, academic, business, and military leaders across the region. Built a computational text-analysis tool to surface and quantify framing bias in written narratives.",
+      "One of approximately 30 fellows in an initiative with West Point focused on U.S. Middle East policy, security, and civil–military relations. Joined a regional delegation with political, diplomatic, academic, business, and military leaders; built a computational text-analysis tool to examine framing bias.",
   },
   {
-    title: "U.S. State Department NSLI-Y Scholar",
-    meta: "Taiwan, Dec 2021 - May 2022",
+    title: "National Security Language Initiative for Youth",
+    meta: "U.S. Department of State Scholar · Taiwan · 2021–2022",
     detail:
-      "One of 13 scholars selected for a funded Mandarin and cultural study fellowship at Wenzao Ursuline University; conducted Mandarin-language youth surveys on Taiwanese cultural and political identity.",
+      "One of 13 scholars selected for Mandarin study at Wenzao Ursuline University. Conducted Mandarin-language youth surveys on Taiwanese identity.",
   },
   {
-    title: "Congress-Bundestag Youth Exchange Scholar",
-    meta: "Germany, Aug 2021 - Dec 2021",
+    title: "Congress–Bundestag Youth Exchange",
+    meta: "Fellow · Germany · 2021",
     detail:
-      "Selected for the U.S.-German bilateral fellowship with study, government-sponsored training, diplomatic activity, and research on innovation policy and European technology ecosystems.",
+      "Selected for the U.S.–German bilateral fellowship; studied innovation policy and European technology ecosystems alongside diplomatic and government programming.",
   },
   {
     title: "U.S. Consulate Hamburg Youth Council",
-    meta: "Germany, Jan 2022 - May 2022",
+    meta: "Council Member · Germany · 2022",
     detail:
-      "American council member in Consul General Darion Akins's youth council, working with American and German scholars during the early months of the Ukraine crisis.",
+      "Advised Consul General Darion Akins with American and German peers during the early months of the Ukraine crisis.",
   },
   {
-    title: "U.S. Youth Ambassador",
-    meta: "Argentina & Chile, Jun 2020 - Jun 2021",
+    title: "U.S. Youth Ambassadors",
+    meta: "Youth Ambassador · Argentina & Chile · 2020–2021",
     detail:
-      "One of 48 students nationwide selected by the State Department's Bureau of Educational and Cultural Affairs; led community projects and later served as an Alumni Ambassador for program outreach.",
+      "One of 48 students selected nationally for the State Department program; led community projects and later served as an alumni ambassador.",
   },
   {
-    title: "Congressional Advisory Council Leader",
-    meta: "NJ-7th District, Nov 2019 - Jul 2022",
+    title: "Congressional Advisory Council · NJ-7",
+    meta: "Team Lead · 2019–2022",
     detail:
-      "Led a 12-member youth policy team on energy, foreign affairs, and technology recommendations presented directly to Rep. Tom Malinowski.",
+      "Led a 12-member team developing foreign-affairs, energy, and technology recommendations presented to Representative Tom Malinowski.",
   },
 ];
 
-const AWARDS = [
+const EDUCATION = [
   {
-    title: "Yale STARS Science Fellowship",
-    detail: "Science, Technology and Research Scholars Program.",
+    school: "Yale School of Management",
+    degree: "M.M.S., Technology Management",
+    year: "2026–2027",
   },
   {
-    title: "Congressional Commendation",
-    detail: "U.S. House of Representatives. National.",
+    school: "Yale University",
+    degree: "B.S., Electrical Engineering & Computer Science",
+    year: "2026",
   },
   {
-    title: "U.S. State Department Fellow",
-    detail: "NSLI-Y, CBYX, and Youth Ambassadors programs.",
-  },
-  {
-    title: "Kennedy-Lugar Youth Scholarship Finalist",
-    detail: "National.",
-  },
-  {
-    title: "Alan S. Tetelman 1958 Fellowship",
-    detail: "International research in the sciences.",
-  },
-  {
-    title: "ISA Award for Advanced Arabic Study",
-    detail: "Amman, Jordan.",
+    school: "Wenzao Ursuline University of Languages",
+    degree: "Chinese Studies",
+    year: "2021–2022",
   },
 ];
+
+const HONORS = [
+  "Yale STARS Science Fellowship · Science, Technology and Research Scholars",
+  "Alan S. Tetelman 1958 Fellowship",
+  "Congressional Commendation · U.S. House of Representatives",
+  "U.S. Department of State fellowship programs · NSLI-Y, CBYX, and Youth Ambassadors",
+  "Kennedy–Lugar Youth Exchange and Study Scholarship Finalist",
+  "ISA Award for Advanced Arabic Study",
+];
+
+function Arrow() {
+  return <span aria-hidden="true">↗</span>;
+}
+
+function ExternalLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a className="text-link" href={href} target="_blank" rel="noreferrer">
+      {children} <Arrow />
+    </a>
+  );
+}
+
+function SectionHeading({
+  number,
+  title,
+  intro,
+}: {
+  number: string;
+  title: string;
+  intro?: string;
+}) {
+  return (
+    <header className="section-heading">
+      <div className="section-kicker">
+        <span>{number}</span>
+        <span>{title}</span>
+      </div>
+      {intro ? <p>{intro}</p> : null}
+    </header>
+  );
+}
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="min-h-screen flex items-center page-section pt-24 pb-16">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid w-full items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(320px,430px)]"
-        >
-          <div>
-            <h1 className="font-display text-[clamp(3rem,10vw,8rem)] leading-[0.9] tracking-tight mb-6">
-              Joseph
-              <br />
-              Elsayyid
-            </h1>
-
-            <p className="max-w-md text-base text-text-secondary font-body leading-relaxed mb-10">
-              Yale EECS engineer and Yale SOM candidate focused on technology
-              leadership, product strategy, and venture-building. Professional
-              proficiency in Mandarin, Arabic, and Spanish; conversant in French.
-            </p>
-
-            <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs text-text-muted tracking-wider">
-              <a
-                href="mailto:elsayyidjoseph@gmail.com"
-                className="hover:text-text-secondary transition-colors duration-300"
-              >
-                elsayyidjoseph@gmail.com
-              </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-text-secondary transition-colors duration-300"
-              >
-                Resume
-              </a>
-            </div>
+      <section className="hero page-shell" id="top" aria-labelledby="hero-title">
+        <div className="hero-copy">
+          <p className="hero-name">Joseph Elsayyid</p>
+          <h1 id="hero-title">
+            Engineer working across <em>advanced computing</em>, technology
+            strategy, and global technology systems.
+          </h1>
+          <p className="hero-intro">
+            I work from circuits and computer architecture outward—to the
+            markets, institutions, and international systems that shape how
+            technology is built and governed.
+          </p>
+          <div className="hero-actions" aria-label="Primary links">
+            <a className="button button-primary" href="#work">
+              Explore selected work <span aria-hidden="true">↓</span>
+            </a>
+            <a className="button button-secondary" href="/resume.pdf" target="_blank">
+              Resume <Arrow />
+            </a>
           </div>
+        </div>
 
-          <div className="relative mx-auto w-full max-w-[24rem] justify-self-center lg:mx-0 lg:justify-self-end">
-            <div className="relative aspect-[4/5] overflow-hidden border border-border bg-bg-secondary">
-              <Image
-                src="/joseph-elsayyid-schwarzman.jpeg"
-                alt="Joseph Elsayyid"
-                fill
-                priority
-                sizes="(min-width: 1024px) 430px, min(100vw - 3rem, 384px)"
-                className="object-cover object-[50%_42%]"
-              />
-            </div>
-            <div
-              aria-hidden="true"
-              className="absolute -bottom-3 -right-3 -z-10 h-full w-full border border-accent/30"
+        <div className="hero-aside">
+          <div className="portrait-frame">
+            <Image
+              src="/joseph-elsayyid-schwarzman.jpeg"
+              alt="Portrait of Joseph Elsayyid"
+              fill
+              priority
+              sizes="(min-width: 1100px) 390px, (min-width: 720px) 36vw, calc(100vw - 48px)"
+              className="portrait"
             />
+            <span className="portrait-caption">New Haven, Connecticut</span>
           </div>
-        </motion.div>
-      </section>
+          <dl className="hero-facts">
+            <div>
+              <dt>Engineering</dt>
+              <dd>Yale B.S., Electrical Engineering & Computer Science</dd>
+            </div>
+            <div>
+              <dt>Management</dt>
+              <dd>Yale SOM M.M.S. candidate, Technology Management</dd>
+            </div>
+            <div>
+              <dt>Research</dt>
+              <dd>Advanced computing work across the U.S., Europe, and Asia</dd>
+            </div>
+          </dl>
+        </div>
 
-      {/* Work */}
-      <section id="work" className="py-24 md:py-32 page-section">
-        <div className="max-w-2xl">
-          <ScrollReveal>
-            <h2 className="font-display text-[clamp(2rem,5vw,4rem)] leading-[0.95] tracking-tight mb-16">
-              Work
-            </h2>
-          </ScrollReveal>
-
-          {EXPERIENCES.map((exp, i) => (
-            <ScrollReveal key={i} delay={i * 0.05}>
-              <div
-                className={`py-8 ${
-                  i < EXPERIENCES.length - 1 ? "border-b border-border" : ""
-                }`}
-              >
-                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-1">
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <h3 className="font-display text-xl text-text-primary">
-                      {exp.org}
-                    </h3>
-                    {"href" in exp ? (
-                      <a
-                        href={exp.href}
-                        target="_blank"
-                      rel="noopener noreferrer"
-                      className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
-                    >
-                        {exp.linkLabel}
-                      </a>
-                    ) : null}
-                  </div>
-                  <span className="font-mono text-xs text-text-muted tracking-wider shrink-0">
-                    {exp.period}
-                  </span>
-                </div>
-                <p className="font-mono text-xs text-text-muted tracking-wider mb-3">
-                  {exp.location}
-                </p>
-                {exp.description.map((para, j) => (
-                  <p
-                    key={j}
-                    className="font-body text-sm text-text-secondary leading-relaxed mb-2 last:mb-0"
-                  >
-                    {para}
-                  </p>
-                ))}
-              </div>
-            </ScrollReveal>
-          ))}
+        <div className="throughline" aria-label="Professional throughline">
+          <span>Circuits & architecture</span>
+          <span aria-hidden="true">→</span>
+          <span>Advanced computing</span>
+          <span aria-hidden="true">→</span>
+          <span>Global technology systems</span>
+          <span aria-hidden="true">→</span>
+          <span>Institutions & leadership</span>
         </div>
       </section>
 
-      {/* Projects */}
-      <section id="projects" className="py-24 md:py-32 border-t border-border page-section">
-        <div className="max-w-2xl">
-          <ScrollReveal>
-            <h2 className="font-display text-[clamp(2rem,5vw,4rem)] leading-[0.95] tracking-tight mb-16">
-              Projects
-            </h2>
-          </ScrollReveal>
-
-          {PROJECTS.map((project, i) => (
-            <ScrollReveal key={i} delay={i * 0.05}>
-              <div
-                className={`py-8 ${
-                  i < PROJECTS.length - 1 ? "border-b border-border" : ""
-                }`}
-              >
-                <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <h3 className="font-display text-xl text-text-primary">
-                    {project.title}
-                  </h3>
-                  {"href" in project ? (
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
-                    >
-                      {project.linkLabel}
-                    </a>
+      <section className="page-shell section-block" id="work" aria-labelledby="work-title">
+        <SectionHeading
+          number="01"
+          title="Selected work"
+          intro="Engineering work across AI hardware, embedded computing, medical data systems, and the security of advanced technology."
+        />
+        <h2 className="sr-only" id="work-title">
+          Selected work
+        </h2>
+        <div className="work-list">
+          {WORK.map((item, index) => (
+            <article className="work-item" key={item.institution}>
+              <div className="work-index" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <div className="work-meta">
+                <p>{item.role}</p>
+                <span>{item.period}</span>
+                <span>{item.location}</span>
+              </div>
+              <div className="work-body">
+                <h3>{item.institution}</h3>
+                <p className="work-summary">{item.summary}</p>
+                <p className="work-detail">{item.detail}</p>
+                <div className="work-footer">
+                  <ul className="tag-list" aria-label={`${item.institution} areas`}>
+                    {item.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                  {item.link ? (
+                    <ExternalLink href={item.link.href}>{item.link.label}</ExternalLink>
                   ) : null}
                 </div>
-                {project.description.map((para, j) => (
-                  <p
-                    key={j}
-                    className="font-body text-sm text-text-secondary leading-relaxed mb-2 last:mb-0"
-                  >
-                    {para}
-                  </p>
-                ))}
               </div>
-            </ScrollReveal>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* Leadership */}
-      <section id="leadership" className="py-24 md:py-32 border-t border-border page-section">
-        <div className="max-w-2xl">
-          <ScrollReveal>
-            <h2 className="font-display text-[clamp(2rem,5vw,4rem)] leading-[0.95] tracking-tight mb-16">
-              Leadership
+      <section
+        className="leadership-section page-shell section-block"
+        id="leadership"
+        aria-labelledby="leadership-title"
+      >
+        <SectionHeading
+          number="02"
+          title="Leadership & institution building"
+          intro="Building durable structures that let technical people identify problems, fund experiments, and ship useful systems."
+        />
+        <div className="leadership-feature">
+          <div className="leadership-title-block">
+            <p className="eyebrow">Founder & Chair · 2025–2026</p>
+            <h2 id="leadership-title">YCC Technology Division</h2>
+            <ExternalLink href="https://ycctech.org">Visit ycctech.org</ExternalLink>
+          </div>
+          <div className="leadership-copy">
+            <p className="lead">
+              Founded Yale College Council’s technology division to create a
+              formal student voice in Yale’s technology infrastructure.
+            </p>
+            <p>
+              Built programs for paid software bounties, hardware grants,
+              hackathons, and the YCC Innovation Prize. The division reviewed
+              project funding and supported campus tools spanning dining, room
+              availability, events, campus mapping, and CAS-authenticated
+              applications.
+            </p>
+            <ul className="initiative-list">
+              <li>Builder funding</li>
+              <li>Project review</li>
+              <li>Campus infrastructure</li>
+              <li>Student governance</li>
+            </ul>
+          </div>
+        </div>
+        <div className="advisory-row">
+          <p className="eyebrow">Student Advisory · Yale College</p>
+          <p>
+            Competitively selected to advise Dean Alexia Belperron on Science &
+            Quantitative Reasoning resource allocation.
+          </p>
+          <ExternalLink href="https://science.yalecollege.yale.edu/academics-and-tutoring/student-advisory-committee">
+            Committee
+          </ExternalLink>
+        </div>
+      </section>
+
+      <section className="page-shell section-block" id="projects" aria-labelledby="projects-title">
+        <SectionHeading
+          number="03"
+          title="Selected projects"
+          intro="Technical systems designed around physical constraints, measurable performance, and real operating environments."
+        />
+        <h2 className="sr-only" id="projects-title">
+          Selected projects
+        </h2>
+        <div className="project-list">
+          {PROJECTS.map((project) => (
+            <article className="project-item" key={project.title}>
+              <p className="project-number">{project.number}</p>
+              <div>
+                <p className="eyebrow">{project.eyebrow}</p>
+                <h3>{project.title}</h3>
+              </div>
+              <div className="project-detail">
+                <p>{project.detail}</p>
+                {project.link ? (
+                  <ExternalLink href={project.link.href}>{project.link.label}</ExternalLink>
+                ) : null}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="global-section" id="global" aria-labelledby="global-title">
+        <div className="page-shell section-block">
+          <SectionHeading
+            number="04"
+            title="Global technology & public affairs"
+            intro="International experience that informs how I think about semiconductor supply chains, technological dependence, export controls, cross-border markets, and institutional decision-making."
+          />
+          <h2 className="sr-only" id="global-title">
+            Global technology and public affairs
+          </h2>
+          <div className="global-grid">
+            {GLOBAL_EXPERIENCE.map((item, index) => (
+              <article className={index === 0 ? "global-item global-item-featured" : "global-item"} key={item.title}>
+                <p className="global-count">{String(index + 1).padStart(2, "0")}</p>
+                <h3>{item.title}</h3>
+                <p className="global-meta">{item.meta}</p>
+                <p className="global-detail">{item.detail}</p>
+              </article>
+            ))}
+          </div>
+          <p className="language-line">
+            <span>Languages</span>
+            Certified proficiency in Mandarin Chinese, Arabic, and Spanish;
+            conversational French and German.
+          </p>
+        </div>
+      </section>
+
+      <section className="page-shell section-block writing-section" id="writing" aria-labelledby="writing-title">
+        <SectionHeading
+          number="05"
+          title="Selected writing"
+          intro="Reporting and analysis on science, engineering, and the institutions around them."
+        />
+        <h2 className="sr-only" id="writing-title">
+          Selected writing
+        </h2>
+        <a
+          className="writing-item"
+          href="https://yaledailynews.com/articles/yale-quantum-institute-marks-ten-years"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div>
+            <p className="eyebrow">Yale Daily News · February 6, 2025</p>
+            <h3>Yale Quantum Institute Marks Ten Years</h3>
+          </div>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </section>
+
+      <section className="page-shell section-block about-section" id="about" aria-labelledby="about-title">
+        <SectionHeading number="06" title="About" />
+        <div className="about-grid">
+          <div className="about-copy">
+            <h2 id="about-title">
+              I’m an engineer interested in how emerging technologies move from
+              technical systems into companies, institutions, and international
+              competition.
             </h2>
-          </ScrollReveal>
+            <p>
+              I studied electrical engineering and computer science at Yale and
+              am continuing at Yale SOM in Technology Management. My technical
+              work has moved between semiconductor research in Belgium and Hong
+              Kong, embedded AI at Yale, and large-scale imaging systems at Yale
+              School of Medicine.
+            </p>
+            <p>
+              Work across Taiwan, Germany, Jordan, the Middle East, and South
+              America sharpened my interest in technology governance and the
+              institutions that shape technical progress. At Yale, I put that
+              interest into practice by founding YCC Tech and creating a channel
+              for students to help improve campus technology.
+            </p>
+          </div>
+          <aside className="about-note">
+            <p className="eyebrow">Current focus</p>
+            <p>
+              Advanced computing, semiconductor ecosystems, technology
+              institutions, and the translation of engineering constraints into
+              strategic decisions.
+            </p>
+          </aside>
+        </div>
 
-          <ScrollReveal>
-            <div className="mb-12">
-              <div className="mb-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 className="font-display text-xl text-text-primary">
-                  YCC Tech Division Chair
-                </h3>
-                <a
-                  href="https://ycctech.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
-                >
-                  Website
-                </a>
-              </div>
-              <ul className="space-y-2">
-                {YCC_INITIATIVES.map((item, i) => (
-                  <li
-                    key={i}
-                    className="font-body text-sm text-text-secondary leading-relaxed"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.05}>
-            <div className="mb-12 pb-12 border-b border-border">
-              <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 className="font-display text-xl text-text-primary">
-                  Student Advisory, Yale College
-                </h3>
-                <a
-                  href="https://science.yalecollege.yale.edu/academics-and-tutoring/student-advisory-committee"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-b border-accent/60 pb-px font-mono text-[10px] uppercase tracking-[0.14em] text-accent transition-colors duration-300 hover:border-text-primary hover:text-text-primary"
-                >
-                  Committee
-                </a>
-              </div>
-              <p className="font-body text-sm text-text-secondary leading-relaxed">
-                Competitively selected to advise Yale College on Science &
-                Quantitative Reasoning resource allocation priorities under
-                Dean Alexia Belperron.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
-            <div>
-              <span className="font-mono text-xs text-text-muted tracking-[0.2em] uppercase block mb-8">
-                Government & Diplomatic
-              </span>
-              {DIPLOMATIC.map((exp, i) => (
-                <div
-                  key={i}
-                  className={`py-6 ${
-                    i < DIPLOMATIC.length - 1 ? "border-b border-border" : ""
-                  }`}
-                >
-                  <h3 className="font-display text-lg text-text-primary mb-1">
-                    {exp.title}
-                  </h3>
-                  <p className="mb-2 font-mono text-xs tracking-wider text-text-muted">
-                    {exp.meta}
-                  </p>
-                  <p className="font-body text-sm text-text-secondary">
-                    {exp.detail}
-                  </p>
+        <div className="credentials-grid">
+          <div>
+            <p className="credential-heading">Education</p>
+            <div className="credential-list">
+              {EDUCATION.map((item) => (
+                <div className="education-item" key={item.school}>
+                  <div>
+                    <h3>{item.school}</h3>
+                    <p>{item.degree}</p>
+                  </div>
+                  <span>{item.year}</span>
                 </div>
               ))}
             </div>
-          </ScrollReveal>
+          </div>
+          <div>
+            <p className="credential-heading">Honors</p>
+            <ul className="honors-list">
+              {HONORS.map((honor) => (
+                <li key={honor}>{honor}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" className="py-24 md:py-32 border-t border-border page-section">
-        <div className="max-w-2xl">
-          <ScrollReveal>
-            <h2 className="font-display text-[clamp(2rem,5vw,4rem)] leading-[0.95] tracking-tight mb-16">
-              About
-            </h2>
-          </ScrollReveal>
-
-          <div className="space-y-6 mb-16">
-            <ScrollReveal>
-              <p className="font-body text-base text-text-secondary leading-relaxed">
-                I&rsquo;m an engineer with a B.S. in Electrical Engineering &
-                Computer Science from Yale, now pursuing the M.M.S. in
-                Technology Management at Yale SOM. My work has ranged from
-                22-nanometer compute-in-memory accelerators in Belgium to AI
-                hardware in Hong Kong to medical imaging data systems at Yale
-                School of Medicine.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delay={0.05}>
-              <p className="font-body text-base text-text-secondary leading-relaxed">
-                Before Yale, I was a U.S. State Department fellow in Taiwan, a
-                Congress-Bundestag scholar in Germany, and a youth ambassador in
-                Argentina and Chile. I work across Mandarin, Arabic, and Spanish
-                at a professional level, with working French and German.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal delay={0.15}>
-            <div className="border-t border-border pt-8 space-y-6">
-              <div>
-                <span className="font-mono text-xs text-text-muted tracking-[0.2em] uppercase block mb-3">
-                  Education
-                </span>
-                <p className="font-body text-sm text-text-primary">
-                  Yale School of Management
-                </p>
-                <p className="font-body text-sm text-text-secondary mb-3">
-                  M.M.S. Technology Management, 2026-27
-                </p>
-                <p className="font-body text-sm text-text-primary">
-                  Yale University
-                </p>
-                <p className="font-body text-sm text-text-secondary mb-3">
-                  B.S. Electrical Engineering & Computer Science, completed 2026
-                </p>
-                <p className="font-body text-sm text-text-primary">
-                  Wenzao Ursuline University of Languages
-                </p>
-                <p className="font-body text-sm text-text-secondary">
-                  Chinese Studies, 2021-22
-                </p>
-              </div>
-
-              <div>
-                <span className="font-mono text-xs text-text-muted tracking-[0.2em] uppercase block mb-3">
-                  Selected Writing
-                </span>
-                <a
-                  href="https://yaledailynews.com/articles/yale-quantum-institute-marks-ten-years"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-b border-accent/60 pb-px font-body text-sm text-text-primary transition-colors duration-300 hover:border-text-primary hover:text-accent"
-                >
-                  Yale Quantum Institute marks ten years
-                </a>
-                <p className="mt-2 font-body text-sm text-text-secondary">
-                  Yale Daily News, February 6, 2025
-                </p>
-              </div>
-
-              <div>
-                <span className="font-mono text-xs text-text-muted tracking-[0.2em] uppercase block mb-3">
-                  Honors & Awards
-                </span>
-                <div className="space-y-2">
-                  {AWARDS.map((award, i) => (
-                    <div key={i}>
-                      <p className="font-body text-sm text-text-primary">
-                        {award.title}
-                      </p>
-                      <p className="font-body text-sm text-text-secondary">
-                        {award.detail}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <span className="font-mono text-xs text-text-muted tracking-[0.2em] uppercase block mb-3">
-                  Contact
-                </span>
-                <div className="space-y-1">
-                  <a
-                    href="mailto:elsayyidjoseph@gmail.com"
-                    className="block font-body text-sm text-text-primary hover:text-accent transition-colors duration-300"
-                  >
-                    elsayyidjoseph@gmail.com
-                  </a>
-                  <a
-                    href="/resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block font-body text-sm text-text-primary hover:text-accent transition-colors duration-300"
-                  >
-                    Resume (PDF)
-                  </a>
-                  <p className="font-body text-sm text-text-secondary">
-                    New Haven, CT
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
+      <section className="contact-section page-shell" id="contact" aria-labelledby="contact-title">
+        <p className="eyebrow">Contact</p>
+        <h2 id="contact-title">Let’s talk about technology, systems, and what comes next.</h2>
+        <div className="contact-links">
+          <a className="button button-primary" href="mailto:elsayyidjoseph@gmail.com">
+            elsayyidjoseph@gmail.com <Arrow />
+          </a>
+          <a className="button button-secondary" href="/resume.pdf" target="_blank">
+            Resume <Arrow />
+          </a>
+          <ExternalLink href="https://github.com/jelsayyid">GitHub</ExternalLink>
         </div>
       </section>
     </>

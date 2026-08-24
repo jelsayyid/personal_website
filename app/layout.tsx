@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { DM_Serif_Display, Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
-import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
 
 const dmSerif = DM_Serif_Display({
@@ -26,9 +25,13 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Joseph Elsayyid",
+  metadataBase: new URL("https://josephelsayyid.com"),
+  title: "Joseph Elsayyid · Advanced Computing & Technology Strategy",
   description:
-    "Yale EECS engineer and Yale SOM candidate focused on technology leadership, product strategy, and venture-building. Professional proficiency in Mandarin, Arabic, and Spanish; conversant in French.",
+    "Engineer working across advanced computing, technology strategy, and global technology systems. Yale EECS and Yale SOM Technology Management.",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Joseph Elsayyid",
     "Yale",
@@ -37,23 +40,33 @@ export const metadata: Metadata = {
     "Computer Science",
     "Yale School of Management",
     "AI Hardware",
-    "Edge ML",
+    "Semiconductors",
+    "Compute-in-Memory",
+    "Embedded Systems",
+    "Technology Strategy",
   ],
   authors: [{ name: "Joseph Elsayyid" }],
   openGraph: {
-    title: "Joseph Elsayyid",
+    title: "Joseph Elsayyid · Advanced Computing & Technology Strategy",
     description:
-      "Yale EECS engineer and Yale SOM candidate focused on technology leadership, product strategy, and venture-building. Professional proficiency in Mandarin, Arabic, and Spanish; conversant in French.",
+      "Engineer working across advanced computing, technology strategy, and global technology systems.",
     url: "https://josephelsayyid.com",
     siteName: "Joseph Elsayyid",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/joseph-elsayyid-schwarzman.jpeg",
+        alt: "Joseph Elsayyid",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Joseph Elsayyid",
+    title: "Joseph Elsayyid · Advanced Computing & Technology Strategy",
     description:
-      "Yale EECS engineer and Yale SOM candidate focused on technology leadership, product strategy, and venture-building. Professional proficiency in Mandarin, Arabic, and Spanish; conversant in French.",
+      "Engineer working across advanced computing, technology strategy, and global technology systems.",
+    images: ["/joseph-elsayyid-schwarzman.jpeg"],
   },
   robots: {
     index: true,
@@ -72,11 +85,9 @@ export default function RootLayout({
       className={`${dmSerif.variable} ${spaceGrotesk.variable} ${spaceMono.variable}`}
     >
       <body>
-        <SmoothScroll>
-          <Navigation />
-          <main>{children}</main>
-          <Footer />
-        </SmoothScroll>
+        <Navigation />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
