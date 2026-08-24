@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/joseph-elsayyid-headshot.png",
+        url: "/joseph-elsayyid-hero.png",
         alt: "Joseph Elsayyid",
       },
     ],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "Joseph Elsayyid",
     description:
       "Engineer working across advanced computing, technology strategy, and global technology systems.",
-    images: ["/joseph-elsayyid-headshot.png"],
+    images: ["/joseph-elsayyid-hero.png"],
   },
   robots: {
     index: true,

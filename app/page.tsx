@@ -227,6 +227,16 @@ export default function Home() {
   return (
     <>
       <section className="hero page-shell" id="top" aria-labelledby="hero-title">
+        <div className="hero-image-wrap">
+          <Image
+            src="/joseph-elsayyid-hero.png"
+            alt="Joseph Elsayyid"
+            fill
+            priority
+            sizes="(min-width: 861px) 68vw, calc(100vw - 32px)"
+            className="hero-image"
+          />
+        </div>
         <div className="hero-copy">
           <h1 id="hero-title">
             Engineer working across advanced computing, technology strategy,
@@ -242,16 +252,6 @@ export default function Home() {
             </a>
             <a href="mailto:elsayyidjoseph@gmail.com">Email</a>
           </div>
-        </div>
-        <div className="portrait-wrap">
-          <Image
-            src="/joseph-elsayyid-headshot.png"
-            alt="Joseph Elsayyid"
-            fill
-            priority
-            sizes="(min-width: 900px) 320px, calc(100vw - 48px)"
-            className="portrait"
-          />
         </div>
       </section>
 

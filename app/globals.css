@@ -101,14 +101,18 @@ a:focus-visible {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
+  position: relative;
+  display: flex;
   align-items: center;
-  gap: clamp(56px, 8vw, 96px);
+  min-height: 520px;
+  overflow: hidden;
   padding-block: 88px;
 }
 
 .hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 68%;
   max-width: 760px;
 }
 
@@ -153,16 +157,32 @@ h1 {
   font-weight: 600;
 }
 
-.portrait-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  background: #eeeeee;
+.hero-image-wrap {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 0 auto;
+  width: 68%;
+  overflow: hidden;
 }
 
-.portrait {
+.hero-image-wrap::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.97) 18%,
+    rgba(255, 255, 255, 0.58) 52%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  content: "";
+}
+
+.hero-image {
   object-fit: cover;
-  object-position: center 24%;
+  object-position: center;
+  opacity: 0.72;
 }
 
 .section-block {
@@ -383,10 +403,16 @@ h1 {
   }
 
   .hero {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
     min-height: 0;
     gap: 48px;
     padding-block: 64px;
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: none;
   }
 
   .hero-background {
@@ -395,8 +421,19 @@ h1 {
     white-space: normal;
   }
 
-  .portrait-wrap {
-    width: min(100%, 420px);
+  .hero-image-wrap {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+  }
+
+  .hero-image-wrap::after {
+    display: none;
+  }
+
+  .hero-image {
+    opacity: 1;
   }
 
   .credentials {
