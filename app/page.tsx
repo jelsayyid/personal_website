@@ -28,13 +28,13 @@ const WORK: WorkItem[] = [
   },
   {
     institution: "Kuan Lab, Yale School of Medicine",
-    role: "Research, Medical Imaging Data Systems",
+    role: "Medical Imaging Data Systems Developer",
     period: "January 2026 to present",
     location: "New Haven, CT",
     summary:
       "Built data infrastructure for large-scale 3D brain-imaging analysis at Yale School of Medicine.",
     detail:
-      "Developed modular ingestion, chunked HDF5 and Zarr-style storage, graph construction, validation, and diagnostics for post-segmentation workflows. The system turns large imaging outputs into data that can be checked, queried, and used in downstream analysis.",
+      "Implemented modular ingestion, chunked HDF5 and Zarr-style storage, graph construction, validation, and diagnostics for post-segmentation workflows. The system turns large imaging outputs into data that can be checked, queried, and used in downstream analysis.",
     link: {
       href: "https://github.com/jelsayyid/postseg-connectomics",
       label: "View repository",
@@ -42,13 +42,13 @@ const WORK: WorkItem[] = [
   },
   {
     institution: "HKUST, Spintronic Quantum Material Laboratory",
-    role: "AI Hardware-Software Research Intern",
+    role: "AI Hardware-Software Intern",
     period: "Summer 2025",
     location: "Hong Kong",
     summary:
-      "Worked on hardware-software co-design for a 28 nm MTJ compute-in-memory AI accelerator.",
+      "Developed and evaluated system-level designs for a 28 nm MTJ compute-in-memory AI accelerator.",
     detail:
-      "Analyzed latency, throughput, and energy while testing pruning, quantization, and sparsity strategies. Translated device constraints into system-level software requirements and feasible performance targets.",
+      "Profiled latency, throughput, and energy while testing pruning, quantization, and sparsity strategies. Translated device constraints into software requirements and feasible system-level performance targets.",
   },
   {
     institution: "Yale Intelligent Computing Lab",
@@ -66,7 +66,7 @@ const WORK: WorkItem[] = [
     period: "Summer 2024",
     location: "Louvain-la-Neuve, Belgium",
     summary:
-      "Contributed to a 22 nm mixed-signal compute-in-memory accelerator in a European semiconductor research environment.",
+      "Contributed to hardware-software integration for a 22 nm mixed-signal compute-in-memory accelerator at UCLouvain.",
     detail:
       "Connected RISC-V control and calibration software to circuit-level behavior, improving compute reliability by 25-45% across operating conditions and aligning hardware, firmware, and algorithm requirements.",
   },
@@ -406,8 +406,7 @@ export default function Home() {
       <section className="page-shell section-block contact-section" id="contact" aria-labelledby="contact-title">
         <SectionHeading id="contact-title">Contact</SectionHeading>
         <p>
-          For research, engineering, or technology-related conversations, email
-          me at <a href="mailto:elsayyidjoseph@gmail.com">elsayyidjoseph@gmail.com</a>.
+          To get in touch, email me at: <a href="mailto:elsayyidjoseph@gmail.com">elsayyidjoseph@gmail.com</a>.
         </p>
         <div className="plain-links">
           <a href="/resume.pdf" target="_blank" rel="noreferrer">
