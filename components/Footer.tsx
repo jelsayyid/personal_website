@@ -6,9 +6,8 @@ export default function Footer() {
         <div className="footer-links">
           <a href="mailto:elsayyidjoseph@gmail.com">Email</a>
           <a href="https://github.com/jelsayyid" target="_blank" rel="noreferrer">
-            GitHub ↗
+            GitHub
           </a>
-          <a href="#top">Back to top ↑</a>
         </div>
       </div>
     </footer>
