@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-source-sans",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://josephelsayyid.com"),
@@ -59,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={sourceSans.variable}>
       <body>
         <Navigation />
         <main>{children}</main>
