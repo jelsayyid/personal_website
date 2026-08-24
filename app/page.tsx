@@ -242,9 +242,14 @@ export default function Home() {
             Engineer working across advanced computing, technology strategy,
             and global technology systems.
           </h1>
-          <p className="hero-background">
-            Yale B.S. in Electrical Engineering &amp; Computer Science. Yale SOM M.M.S. candidate in Technology Management.
-          </p>
+          <div className="hero-details">
+            <p>
+              Yale B.S. in Electrical Engineering &amp; Computer Science. Yale SOM M.M.S. candidate in Technology Management.
+            </p>
+            <p>
+              Certified proficiency in Mandarin Chinese, Arabic, and Spanish; conversational French and German.
+            </p>
+          </div>
           <div className="plain-links" aria-label="Primary links">
             <a href="#work">Selected work</a>
             <a href="/resume.pdf" target="_blank" rel="noreferrer">

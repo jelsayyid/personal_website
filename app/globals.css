@@ -138,12 +138,20 @@ h1 {
   line-height: 1.08;
 }
 
-.hero-background {
+.hero-details {
   max-width: none;
   margin-bottom: 28px;
+}
+
+.hero-details p {
+  margin-bottom: 3px;
   color: var(--text);
   font-size: 14px;
   white-space: nowrap;
+}
+
+.hero-details p:last-child {
+  margin-bottom: 0;
 }
 
 .plain-links {
@@ -413,8 +421,11 @@ h1 {
     max-width: none;
   }
 
-  .hero-background {
+  .hero-details {
     max-width: 680px;
+  }
+
+  .hero-details p {
     font-size: 15px;
     white-space: normal;
   }
