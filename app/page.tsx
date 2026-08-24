@@ -264,8 +264,9 @@ export default function Home() {
               <p className="entry-meta">
                 {item.role}, {item.period}, {item.location}
               </p>
-              <p className="entry-lead">{item.summary}</p>
-              <p>{item.detail}</p>
+              <p>
+                {item.summary} {item.detail}
+              </p>
               {item.link ? (
                 <ExternalLink href={item.link.href}>{item.link.label}</ExternalLink>
               ) : null}
@@ -280,16 +281,13 @@ export default function Home() {
           <article className="entry entry-featured">
             <h3>YCC Technology Division</h3>
             <p className="entry-meta">Founder and Chair, 2025 to 2026</p>
-            <p className="entry-lead">
-              Founded Yale College Council’s technology division to create a
-              formal student voice in Yale’s technology infrastructure.
-            </p>
             <p>
-              Built programs for paid software bounties, hardware grants,
-              hackathons, and the YCC Innovation Prize. The division reviewed
-              project funding and supported campus tools for dining, room
-              availability, events, campus mapping, and CAS-authenticated
-              applications.
+              Founded Yale College Council’s technology division to create a
+              formal student voice in Yale’s technology infrastructure. Built
+              programs for paid software bounties, hardware grants, hackathons,
+              and the YCC Innovation Prize. The division reviewed project
+              funding and supported campus tools for dining, room availability,
+              events, campus mapping, and CAS-authenticated applications.
             </p>
             <ExternalLink href="https://ycctech.org">ycctech.org</ExternalLink>
           </article>
