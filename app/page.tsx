@@ -232,15 +232,8 @@ export default function Home() {
             Engineer working across advanced computing, technology strategy,
             and global technology systems.
           </h1>
-          <p className="hero-intro">
-            My work connects circuits and computer architecture with the
-            markets, institutions, and international systems that shape how
-            technology is built and governed.
-          </p>
           <p className="hero-background">
-            Yale B.S. in Electrical Engineering and Computer Science. Yale SOM
-            M.M.S. candidate in Technology Management. Research and work across
-            the United States, Europe, and Asia.
+            Yale B.S. in Electrical Engineering &amp; Computer Science. Yale SOM M.M.S. candidate in Technology Management.
           </p>
           <div className="plain-links" aria-label="Primary links">
             <a href="#work">Selected work</a>

@@ -129,22 +129,17 @@ h2 {
 
 h1 {
   max-width: 800px;
-  margin-bottom: 32px;
-  font-size: clamp(40px, 4.2vw, 58px);
+  margin-bottom: 26px;
+  font-size: clamp(38px, 3.9vw, 54px);
   line-height: 1.08;
 }
 
-.hero-intro {
-  max-width: 680px;
-  margin-bottom: 20px;
-  font-size: clamp(18px, 1.8vw, 22px);
-  line-height: 1.45;
-}
-
 .hero-background {
-  max-width: 680px;
+  max-width: none;
   margin-bottom: 28px;
   color: var(--text);
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 .plain-links {
@@ -394,6 +389,12 @@ h1 {
     padding-block: 64px;
   }
 
+  .hero-background {
+    max-width: 680px;
+    font-size: 15px;
+    white-space: normal;
+  }
+
   .portrait-wrap {
     width: min(100%, 420px);
   }
@@ -417,11 +418,7 @@ h1 {
   }
 
   h1 {
-    font-size: 39px;
-  }
-
-  .hero-intro {
-    font-size: 19px;
+    font-size: 37px;
   }
 
   .section-block {
