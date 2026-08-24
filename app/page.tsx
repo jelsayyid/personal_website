@@ -245,7 +245,7 @@ export default function Home() {
         </div>
         <div className="portrait-wrap">
           <Image
-            src="/joseph-elsayyid-schwarzman.jpeg"
+            src="/joseph-elsayyid-headshot.png"
             alt="Joseph Elsayyid"
             fill
             priority
