@@ -245,8 +245,8 @@ h1 {
 }
 
 .section-backdrop-leadership .section-backdrop-image {
-  object-position: center 53%;
-  opacity: 0.86;
+  object-position: right 70%;
+  opacity: 0.78;
 }
 
 .section-backdrop-leadership::after {
@@ -257,7 +257,7 @@ h1 {
 
 .section-backdrop-global {
   width: 64%;
-  height: 300px;
+  height: 360px;
 }
 
 .section-backdrop-global::after {
@@ -267,7 +267,7 @@ h1 {
 }
 
 .section-backdrop-global .section-backdrop-image {
-  object-position: center bottom;
+  object-position: center 82%;
   opacity: 0.68;
 }
 
@@ -276,8 +276,8 @@ h1 {
 }
 
 .section-backdrop-about .section-backdrop-image {
-  object-position: right 70%;
-  opacity: 0.8;
+  object-position: center 54%;
+  opacity: 0.84;
 }
 
 .section-backdrop-about::after {
@@ -559,10 +559,11 @@ h1 {
   .section-backdrop-global {
     right: -4%;
     width: 108%;
+    height: 300px;
   }
 
   .section-backdrop-leadership .section-backdrop-image {
-    object-position: center bottom;
+    object-position: right bottom;
   }
 
   .section-backdrop-global::after {
@@ -570,12 +571,13 @@ h1 {
   }
 
   .section-backdrop-global .section-backdrop-image {
+    object-position: center 82%;
     opacity: 0.72;
   }
 
   .section-backdrop-about .section-backdrop-image {
-    object-position: right bottom;
-    opacity: 0.72;
+    object-position: center bottom;
+    opacity: 0.76;
   }
 
   .credentials {
