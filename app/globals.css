@@ -245,16 +245,30 @@ h1 {
 }
 
 .section-backdrop-leadership .section-backdrop-image {
-  object-position: center 42%;
-  transform: scaleX(-1);
+  object-position: center 53%;
+  opacity: 0.86;
+}
+
+.section-backdrop-leadership::after {
+  background:
+    linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.92) 26%, rgba(255, 255, 255, 0.08) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0.88) 100%);
 }
 
 .section-backdrop-global {
+  width: 64%;
   height: 300px;
 }
 
+.section-backdrop-global::after {
+  background:
+    linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.88) 24%, rgba(255, 255, 255, 0.22) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 52%, rgba(255, 255, 255, 0.84) 100%);
+}
+
 .section-backdrop-global .section-backdrop-image {
-  object-position: center 72%;
+  object-position: center bottom;
+  opacity: 0.68;
 }
 
 .section-backdrop-about {
@@ -262,7 +276,14 @@ h1 {
 }
 
 .section-backdrop-about .section-backdrop-image {
-  object-position: right 42%;
+  object-position: right 70%;
+  opacity: 0.8;
+}
+
+.section-backdrop-about::after {
+  background:
+    linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 28%, rgba(255, 255, 255, 0.12) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0.82) 100%);
 }
 
 .section-block > h2 {
@@ -533,6 +554,28 @@ h1 {
   .section-backdrop-global,
   .section-backdrop-about {
     height: 260px;
+  }
+
+  .section-backdrop-global {
+    right: -4%;
+    width: 108%;
+  }
+
+  .section-backdrop-leadership .section-backdrop-image {
+    object-position: center bottom;
+  }
+
+  .section-backdrop-global::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0.7) 72%, #ffffff 100%);
+  }
+
+  .section-backdrop-global .section-backdrop-image {
+    opacity: 0.72;
+  }
+
+  .section-backdrop-about .section-backdrop-image {
+    object-position: right bottom;
+    opacity: 0.72;
   }
 
   .credentials {

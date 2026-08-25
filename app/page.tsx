@@ -302,7 +302,7 @@ export default function Home() {
       </section>
 
       <section className="page-shell section-block section-visual" id="leadership" aria-labelledby="leadership-title">
-        <SectionBackdrop src="/joseph-elsayyid-habibitech-summit.webp" variant="leadership" />
+        <SectionBackdrop src="/joseph-elsayyid-kitchen.webp" variant="leadership" />
         <SectionHeading id="leadership-title">Leadership and Institution Building</SectionHeading>
         <div className="entry-list">
           <article className="entry entry-featured">
