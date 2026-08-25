@@ -223,6 +223,26 @@ function SectionHeading({ id, children }: { id: string; children: React.ReactNod
   return <h2 id={id}>{children}</h2>;
 }
 
+function SectionBackdrop({
+  src,
+  variant,
+}: {
+  src: string;
+  variant: "work" | "leadership" | "global" | "about";
+}) {
+  return (
+    <div className={`section-backdrop section-backdrop-${variant}`} aria-hidden="true">
+      <Image
+        src={src}
+        alt=""
+        fill
+        sizes="(max-width: 860px) 100vw, 56vw"
+        className="section-backdrop-image"
+      />
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -260,7 +280,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="page-shell section-block" id="work" aria-labelledby="work-title">
+      <section className="page-shell section-block section-visual" id="work" aria-labelledby="work-title">
+        <SectionBackdrop src="/joseph-elsayyid-yale-staircase.webp" variant="work" />
         <SectionHeading id="work-title">Selected Work</SectionHeading>
         <div className="entry-list">
           {WORK.map((item) => (
@@ -280,7 +301,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="page-shell section-block" id="leadership" aria-labelledby="leadership-title">
+      <section className="page-shell section-block section-visual" id="leadership" aria-labelledby="leadership-title">
+        <SectionBackdrop src="/joseph-elsayyid-habibitech-summit.webp" variant="leadership" />
         <SectionHeading id="leadership-title">Leadership and Institution Building</SectionHeading>
         <div className="entry-list">
           <article className="entry entry-featured">
@@ -325,7 +347,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="page-shell section-block" id="global" aria-labelledby="global-title">
+      <section className="page-shell section-block section-visual" id="global" aria-labelledby="global-title">
+        <SectionBackdrop src="/joseph-elsayyid-global-forum.webp" variant="global" />
         <SectionHeading id="global-title">Global Technology and Public Affairs</SectionHeading>
         <p className="section-intro">
           These experiences inform how I think about semiconductor supply
@@ -365,7 +388,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="page-shell section-block" id="about" aria-labelledby="about-title">
+      <section className="page-shell section-block section-visual" id="about" aria-labelledby="about-title">
+        <SectionBackdrop src="/joseph-elsayyid-yale-som-welcome.webp" variant="about" />
         <SectionHeading id="about-title">About</SectionHeading>
         <div className="about-copy">
           <p className="about-lead">
