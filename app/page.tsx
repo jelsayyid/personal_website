@@ -22,9 +22,9 @@ const WORK: WorkItem[] = [
     period: "Summer 2026",
     location: "New Haven, CT",
     summary:
-      "Designed and taught three original seminars for students from 159 countries, connecting technical systems to security and international competition.",
+      "Designed and taught three original intensive seminars for students from 159 countries on embedded and edge systems, health-data technology, cyber conflict, semiconductor supply chains, and technological dependence.",
     detail:
-      "The central unit, “Chip Cold War,” examined Taiwan’s role in advanced-chip production, semiconductor supply chains, export controls, technological dependence, and U.S.-China competition. Other sessions addressed cyber conflict, advanced computing, and national security.",
+      "Built working hardware and software prototypes for demonstrations and hands-on activities, moving students from abstract discussion to testing real systems under practical constraints. Led a CubeSat program in which students created sensing devices for CubeSat-style missions, guiding problem selection, sensor choice, system design, prototyping, testing, and final presentations while owning the curriculum and project coaching.",
   },
   {
     institution: "Kuan Lab, Yale School of Medicine",
@@ -309,12 +309,20 @@ export default function Home() {
             <h3>YCC Technology Division</h3>
             <p className="entry-meta">Founder and Chair, 2025 to 2026</p>
             <p>
-              Founded Yale College Council’s technology division to create a
-              formal student voice in Yale’s technology infrastructure. Built
-              programs for paid software bounties, hardware grants, hackathons,
-              and the YCC Innovation Prize. The division reviewed project
-              funding and supported campus tools for dining, room availability,
-              events, campus mapping, and CAS-authenticated applications.
+              Founded Yale College Council’s technology division as Yale’s
+              builder hub and led an 11-member team creating infrastructure,
+              funding, and events that help students ship useful technology for
+              Yale. Created a Bounty Board offering $200 to $500 for one-week
+              software builds, and commissioned a Yale CAS starter kit plus APIs
+              for campus rooms, dining, events, and geospatial data. Each project
+              used written specifications, acceptance criteria, public
+              repositories, demonstrations, and payment on delivery.
+            </p>
+            <p>
+              Launched hardware microgrants from $40 to $200, the $1,000 YCC
+              Innovation Prize, alumni technology talks, agentic AI workshops,
+              and hackathons. Coordinated proposal review, judges, funding
+              decisions, communications, and cross-campus execution.
             </p>
             <ExternalLink href="https://ycctech.org">ycctech.org</ExternalLink>
           </article>
