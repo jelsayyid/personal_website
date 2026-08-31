@@ -526,11 +526,17 @@ h1 {
   }
 
   .hero-image-wrap::after {
-    display: none;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 48%,
+      rgba(255, 255, 255, 0.22) 66%,
+      rgba(255, 255, 255, 0.76) 86%,
+      #ffffff 100%
+    );
   }
 
   .hero-image {
-    opacity: 1;
+    opacity: 0.82;
   }
 
   .section-backdrop {
