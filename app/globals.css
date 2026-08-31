@@ -528,9 +528,9 @@ h1 {
   .hero-image-wrap::after {
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0) 48%,
-      rgba(255, 255, 255, 0.22) 66%,
-      rgba(255, 255, 255, 0.76) 86%,
+      rgba(255, 255, 255, 0) 36%,
+      rgba(255, 255, 255, 0.3) 56%,
+      rgba(255, 255, 255, 0.82) 80%,
       #ffffff 100%
     );
   }
