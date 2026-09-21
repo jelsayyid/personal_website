@@ -190,7 +190,7 @@ h1 {
 .hero-image {
   object-fit: cover;
   object-position: center;
-  opacity: 0.72;
+  opacity: 0.35;
 }
 
 .section-block {
@@ -534,10 +534,6 @@ h1 {
       rgba(255, 255, 255, 0.82) 80%,
       #ffffff 100%
     );
-  }
-
-  .hero-image {
-    opacity: 0.82;
   }
 
   .section-backdrop {
