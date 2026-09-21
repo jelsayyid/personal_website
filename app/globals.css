@@ -190,6 +190,7 @@ h1 {
 .hero-image {
   object-fit: cover;
   object-position: center;
+  clip-path: inset(0 0 10% 0);
   opacity: 0.35;
 }
 
