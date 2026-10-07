@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 
 const sourceSans = Source_Sans_3({
   subsets: ["latin"],
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://josephelsayyid.com"),
   title: "Joseph Elsayyid",
   description:
-    "Engineer working across advanced computing, technology strategy, and global technology systems. Yale EECS and Yale SOM Technology Management.",
+    "Technology builder working across physical intelligence, AI hardware, and the institutions underneath them. Yale EECS and Yale SOM Technology Management.",
   alternates: {
     canonical: "/",
   },
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Joseph Elsayyid",
     description:
-      "Engineer working across advanced computing, technology strategy, and global technology systems.",
+      "Technology builder working across physical intelligence, AI hardware, and the institutions underneath them.",
     url: "https://josephelsayyid.com",
     siteName: "Joseph Elsayyid",
     locale: "en_US",
@@ -51,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Joseph Elsayyid",
     description:
-      "Engineer working across advanced computing, technology strategy, and global technology systems.",
+      "Technology builder working across physical intelligence, AI hardware, and the institutions underneath them.",
     images: ["/joseph-elsayyid-hero.png"],
   },
   robots: {
@@ -68,9 +67,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={sourceSans.variable}>
       <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <Navigation />
-        <main>{children}</main>
-        <Footer />
+        <main id="main-content" tabIndex={-1}>{children}</main>
       </body>
     </html>
   );

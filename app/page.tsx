@@ -1,457 +1,108 @@
 import Image from "next/image";
+import { BUILDS, ENGINEERING, GLOBAL, WRITING, type Entry } from "./content";
 
-type Link = {
-  href: string;
-  label: string;
-};
-
-type WorkItem = {
-  institution: string;
-  role: string;
-  period: string;
-  location: string;
-  summary: string;
-  detail: string;
-  link?: Link;
-};
-
-const WORK: WorkItem[] = [
-  {
-    institution: "Yale Young Global Scholars, Yale University",
-    role: "Course Instructor",
-    period: "Summer 2026",
-    location: "New Haven, CT",
-    summary:
-      "Designed and taught three original intensive seminars for students from 159 countries on embedded and edge systems, health-data technology, cyber conflict, semiconductor supply chains, and technological dependence.",
-    detail:
-      "Built working hardware and software prototypes for demonstrations and hands-on activities, moving students from abstract discussion to testing real systems under practical constraints. Led a CubeSat program in which students created sensing devices for CubeSat-style missions, guiding problem selection, sensor choice, system design, prototyping, testing, and final presentations while owning the curriculum and project coaching.",
-  },
-  {
-    institution: "Kuan Lab, Yale School of Medicine",
-    role: "Medical Imaging Data Systems Developer",
-    period: "January 2026 to present",
-    location: "New Haven, CT",
-    summary:
-      "Built data infrastructure for large-scale 3D brain-imaging analysis at Yale School of Medicine.",
-    detail:
-      "Implemented modular ingestion, chunked HDF5 and Zarr-style storage, graph construction, validation, and diagnostics for post-segmentation workflows. The system turns large imaging outputs into data that can be checked, queried, and used in downstream analysis.",
-    link: {
-      href: "https://github.com/jelsayyid/postseg-connectomics",
-      label: "View repository",
-    },
-  },
-  {
-    institution: "HKUST, Spintronic Quantum Material Laboratory",
-    role: "AI Hardware-Software Intern",
-    period: "Summer 2025",
-    location: "Hong Kong",
-    summary:
-      "Developed and evaluated system-level designs for a 28 nm MTJ compute-in-memory AI accelerator.",
-    detail:
-      "Profiled latency, throughput, and energy while testing pruning, quantization, and sparsity strategies. Translated device constraints into software requirements and feasible system-level performance targets.",
-  },
-  {
-    institution: "Yale Intelligent Computing Lab",
-    role: "AI Systems Design Intern",
-    period: "2024 to 2025",
-    location: "New Haven, CT",
-    summary:
-      "Developed transformer deployment and profiling workflows for embedded Linux and Raspberry Pi systems.",
-    detail:
-      "Measured latency, memory, power, and accuracy across pruning, quantization, and model-design choices. Extended the same performance analysis to real-time, pruned and quantized ResNet18 inference on constrained hardware.",
-  },
-  {
-    institution: "UCLouvain, Martin Andraud Group",
-    role: "Software-Hardware Co-Design Intern",
-    period: "Summer 2024",
-    location: "Louvain-la-Neuve, Belgium",
-    summary:
-      "Contributed to hardware-software integration for a 22 nm mixed-signal compute-in-memory accelerator at UCLouvain.",
-    detail:
-      "Connected RISC-V control and calibration software to circuit-level behavior, improving compute reliability by 25-45% across operating conditions and aligning hardware, firmware, and algorithm requirements.",
-  },
-  {
-    institution: "FutureTEC",
-    role: "Cybersecurity Intern",
-    period: "Summer 2023",
-    location: "Amman, Jordan",
-    summary:
-      "Monitored security events with SIEM tools, correlated application and network logs, and supported incident analysis for a cyber defense team.",
-    detail:
-      "The role combined operational security work with Arabic-language and cross-cultural technical communication.",
-  },
-];
-
-const PROJECTS = [
-  {
-    title: "Automated Composting System",
-    description: "Hardware-software product design",
-    detail:
-      "Designed a smart-composter prototype for Yale’s 14 residential dining halls. Integrated temperature, humidity, and CO2 sensors with actuators and microcontroller software for closed-loop environmental control in a real deployment context.",
-  },
-  {
-    title: "GPT-Lite, NanoGPT FPGA Optimization",
-    description: "Accelerator mapping and model optimization",
-    detail:
-      "Mapped transformer inference to FPGA fabric and built a software-led workflow for refactoring, quantization, and profiling under tight compute and memory constraints. The source project retained 99% of baseline accuracy.",
-  },
-  {
-    title: "EdgePulse",
-    description: "Embedded physiological sensing",
-    detail:
-      "Built a sensing testbed around the Arduino Nano 33 BLE Sense Rev2, using its IMU for synchronized motion capture and Python tools for recording, visualization, and analysis.",
-    link: {
-      href: "https://github.com/jelsayyid/edgepulse",
-      label: "View repository",
-    },
-  },
-];
-
-const GLOBAL_EXPERIENCE = [
-  {
-    title: "Peace and Dialogue Leadership Initiative",
-    meta: "Fellow, Israel and the Palestinian Territories, 2024 to 2025",
-    detail:
-      "One of approximately 30 fellows in an initiative with West Point focused on U.S. Middle East policy, security, and civil-military relations. Joined a regional delegation with political, diplomatic, academic, business, and military leaders. Built a computational text-analysis tool to examine framing bias.",
-  },
-  {
-    title: "National Security Language Initiative for Youth",
-    meta: "U.S. Department of State Scholar, Taiwan, 2021 to 2022",
-    detail:
-      "One of 13 scholars selected for Mandarin study at Wenzao Ursuline University. Conducted Mandarin-language youth surveys on Taiwanese identity.",
-  },
-  {
-    title: "Congress-Bundestag Youth Exchange",
-    meta: "Fellow, Germany, 2021",
-    detail:
-      "Selected for the U.S.-German bilateral fellowship. Studied innovation policy and European technology ecosystems alongside diplomatic and government programming.",
-  },
-  {
-    title: "U.S. Consulate Hamburg Youth Council",
-    meta: "Council Member, Germany, 2022",
-    detail:
-      "Advised Consul General Darion Akins with American and German peers during the early months of the Ukraine crisis.",
-  },
-  {
-    title: "U.S. Youth Ambassadors",
-    meta: "Youth Ambassador, Argentina and Chile, 2020 to 2021",
-    detail:
-      "One of 48 students selected nationally for the State Department program. Led community projects and later served as an alumni ambassador.",
-  },
-  {
-    title: "Congressional Advisory Council, NJ-7",
-    meta: "Team Lead, 2019 to 2022",
-    detail:
-      "Led a 12-member team developing foreign-affairs, energy, and technology recommendations presented to Representative Tom Malinowski.",
-  },
-];
-
-const ARTICLES = [
-  {
-    title: "Yale Quantum Institute marks ten years",
-    meta: "By Joseph Elsayyid, Yale Daily News, February 5, 2025",
-    href: "https://yaledailynews.com/articles/yale-quantum-institute-marks-ten-years",
-  },
-  {
-    title: "YCC Senate passes bill to establish tech working committee",
-    meta: "Featured in Yale Daily News, September 8, 2025",
-    href: "https://yaledailynews.com/articles/ycc-senate-passes-bill-to-establish-tech-working-committee",
-  },
-  {
-    title: "YCC pushes for MENA Cultural Center",
-    meta: "Featured in Yale Daily News, March 26, 2025",
-    href: "https://yaledailynews.com/articles/ycc-pushes-for-mena-cultural-center",
-  },
-  {
-    title: "YCC passes proposal for Yale Police oversight board",
-    meta: "Featured in Yale Daily News, February 4, 2025",
-    href: "https://yaledailynews.com/articles/ycc-passes-proposal-for-yale-police-oversight-board-citing-concerning-surveillance-of-pro-palestinian-protesters",
-  },
-  {
-    title: "Students teach workshop on how to use Anthropic’s AI tools",
-    meta: "Featured in Yale Daily News, April 10, 2026",
-    href: "https://yaledailynews.com/articles/students-teach-workshop-on-how-to-use-anthropic-s-ai-tools",
-  },
-  {
-    title: "YCC Senate approves second stipend fund for Adobe licenses",
-    meta: "Featured in Yale Daily News, January 27, 2026",
-    href: "https://yaledailynews.com/articles/ycc-senate-approves-second-stipend-fund-for-adobe-licenses",
-  },
-  {
-    title: "YCC pushes for non-English courses to fulfill writing requirement",
-    meta: "Featured in Yale Daily News, January 29, 2025",
-    href: "https://yaledailynews.com/articles/ycc-pushes-for-non-english-courses-to-fulfill-writing-requirement",
-  },
-];
-
-const EDUCATION = [
-  {
-    school: "Yale School of Management",
-    degree: "M.M.S., Technology Management",
-    year: "2026 to 2027",
-  },
-  {
-    school: "Yale University",
-    degree: "B.S., Electrical Engineering and Computer Science",
-    year: "2026",
-  },
-  {
-    school: "Wenzao Ursuline University of Languages",
-    degree: "Chinese Studies",
-    year: "2021 to 2022",
-  },
-];
-
-const HONORS = [
-  "Yale STARS Science Fellowship, Science, Technology and Research Scholars",
-  "Alan S. Tetelman 1958 Fellowship",
-  "Congressional Commendation, U.S. House of Representatives",
-  "U.S. Department of State fellowship programs, NSLI-Y, CBYX, and Youth Ambassadors",
-  "Kennedy-Lugar Youth Exchange and Study Scholarship Finalist",
-  "ISA Award for Advanced Arabic Study",
-];
-
-function ExternalLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <a className="text-link" href={href} target="_blank" rel="noreferrer">
-      {children}
-    </a>
-  );
+function ExternalLink({ href, title, children }: { href: string; title?: string; children: React.ReactNode }) {
+  return <a className="text-link" href={href} title={title} target="_blank" rel="noreferrer">{children}</a>;
 }
-
-function SectionHeading({ id, children }: { id: string; children: React.ReactNode }) {
-  return <h2 id={id}>{children}</h2>;
+function Tags({ items }: { items: string[] }) {
+  return <ul className="tags" aria-label="Technologies and disciplines">{items.map(item => <li key={item}>{item}</li>)}</ul>;
 }
-
-function SectionBackdrop({
-  src,
-  variant,
-}: {
-  src: string;
-  variant: "work" | "leadership" | "global" | "about";
-}) {
-  return (
-    <div className={`section-backdrop section-backdrop-${variant}`} aria-hidden="true">
-      <Image
-        src={src}
-        alt=""
-        fill
-        sizes="(max-width: 860px) 100vw, 56vw"
-        className="section-backdrop-image"
-      />
-    </div>
-  );
+function EntryContent({ item }: { item: Entry }) {
+  return <><header><h3>{item.title}</h3><p className="role">{item.role}</p>{item.meta && <p className="entry-meta">{item.meta}</p>}</header><div className="entry-body">{item.paragraphs.map(p => <p key={p}>{p}</p>)}{item.tags && <Tags items={item.tags} />}{item.link && <ExternalLink href={item.link}>{item.linkLabel ?? "View repository"}</ExternalLink>}</div></>;
 }
-
+function Heading({ id, children }: { id: string; children: React.ReactNode }) {
+  return <div className="section-heading"><h2 id={id}>{children}</h2></div>;
+}
+function SectionBackdrop({ src, variant }: { src: string; variant: "work" | "leadership" | "global" | "about" }) {
+  return <div className={`section-backdrop section-backdrop-${variant}`} aria-hidden="true">
+    <Image src={src} alt="" fill sizes="(max-width: 760px) 100vw, 56vw" />
+  </div>;
+}
 export default function Home() {
-  return (
-    <>
-      <section className="hero page-shell" id="top" aria-labelledby="hero-title">
-        <div className="hero-image-wrap">
-          <Image
-            src="/joseph-elsayyid-hero.png"
-            alt="Joseph Elsayyid"
-            fill
-            priority
-            sizes="(min-width: 861px) 68vw, calc(100vw - 32px)"
-            className="hero-image"
-          />
-        </div>
-        <div className="hero-copy">
-          <h1 id="hero-title">
-            Engineer working across advanced computing, technology strategy,
-            and global technology systems.
-          </h1>
-          <div className="hero-details">
-            <p>
-              Yale B.S. in Electrical Engineering &amp; Computer Science. Yale SOM M.M.S. candidate in Technology Management.
-            </p>
-            <p>
-              Certified proficiency in Mandarin Chinese, Arabic, and Spanish; conversational French and German.
-            </p>
-          </div>
-          <div className="plain-links" aria-label="Primary links">
-            <a href="#work">Selected work</a>
-            <a href="/resume.pdf" target="_blank" rel="noreferrer">
-              Resume
-            </a>
-            <a href="mailto:elsayyidjoseph@gmail.com">Email</a>
-          </div>
-        </div>
-      </section>
+  return <>
+    <section className="hero page-shell" id="top" aria-labelledby="hero-title">
+      <div className="hero-copy">
 
-      <section className="page-shell section-block section-visual" id="work" aria-labelledby="work-title">
-        <SectionBackdrop src="/joseph-elsayyid-yale-staircase.webp" variant="work" />
-        <SectionHeading id="work-title">Selected Work</SectionHeading>
-        <div className="entry-list">
-          {WORK.map((item) => (
-            <article className="entry" key={item.institution}>
-              <h3>{item.institution}</h3>
-              <p className="entry-meta">
-                {item.role}, {item.period}, {item.location}
-              </p>
-              <p>
-                {item.summary} {item.detail}
-              </p>
-              {item.link ? (
-                <ExternalLink href={item.link.href}>{item.link.label}</ExternalLink>
-              ) : null}
-            </article>
-          ))}
+        <h1 id="hero-title">Technology builder working across physical intelligence, AI hardware, and the institutions underneath them.</h1>
+        <p className="hero-subhead">Yale EECS graduate and Yale SOM Technology Management candidate. I build embedded and robotic systems, work on AI hardware and compute, and lead technology initiatives that turn technical ideas into deployed tools and institutions.</p>
+        <p className="hero-languages">Certified proficiency in Mandarin Chinese, Arabic, and Spanish; conversational French.</p>
+        <div className="hero-actions" aria-label="Primary links">
+          <a className="button button-primary" href="#engineering">Engineering work </a>
+          <a className="button" href="#leadership">Leadership &amp; global </a>
+          <a className="button" href="/resume.pdf" target="_blank" rel="noreferrer">Resume </a>
+          <a className="button" href="https://github.com/jelsayyid" target="_blank" rel="noreferrer">GitHub </a>
         </div>
-      </section>
+        <a className="hero-email" href="mailto:elsayyidjoseph@gmail.com">elsayyidjoseph@gmail.com</a>
+      </div>
+      <div className="hero-portrait"><Image src="/joseph-elsayyid-hero.png" alt="Joseph Elsayyid standing among Yale’s stone columns" fill preload sizes="(max-width: 760px) 100vw, 68vw" /></div>
+    </section>
+    <section className="page-shell section-block" id="engineering" aria-labelledby="now-title">
+      <span className="anchor-alias" id="work" />
+      <Heading id="now-title">What I’m building now</Heading>
+      <article className="current-project visualft">
+        <header><h3>VisualFT</h3><p className="role">Embedded Systems Engineer — Productization</p><p className="entry-meta">2026–Present</p></header>
+        <div className="entry-body">
+          <p className="project-lead">Helping productize a camera-based six-axis force/torque sensor for robotics. The system measures small deformations in an elastic flexure by tracking 15 fiducial markers, then maps those measurements to Fx, Fy, Fz, Mx, My, and Mz.</p>
+          <p>My work focuses on the embedded and systems side of the product, including Raspberry Pi/Linux integration, camera acquisition and marker processing, calibration and force estimation, latency and jitter characterization, throughput and compute profiling, robot-facing data streaming, diagnostics, fault handling, and deployment reliability.</p>
+          <p>The project brings together mechanics, optics, sensing, embedded software, and robot control, so getting it reliable requires debugging the full system.</p>
+          <Tags items={["Robotics", "Embedded Linux", "Raspberry Pi", "Camera sensing", "Calibration", "System integration", "Validation"]} />
+        </div>
+      </article>
+      <article className="current-project rewind">
+        <header><h3>Rewind</h3><p className="role">Founder / Builder</p><p className="entry-meta">2026–Present</p></header>
+        <div className="entry-body">
+          <p>Building a privacy-first language learning system that turns real target-language interactions into personalized practice. The system identifies recurring vocabulary and grammar gaps and links them back to evidence from the original interaction.</p>
+          <p>I am prototyping a compact recorder around the XIAO ESP32-S3 Sense, microSD storage, battery power, and physical controls, alongside a local software pipeline for transcription, review, and evidence-linked practice.</p>
+          <p>Rewind was selected for the Tsai CITY Launch Pad Fall 2026 cohort.</p>
+          <Tags items={["ESP32-S3", "Embedded systems", "Local AI", "Product", "Language learning", "Privacy"]} />
+        </div>
+      </article>
+    </section>
+    <section className="page-shell section-block section-visual" aria-labelledby="engineering-title">
+      <SectionBackdrop src="/joseph-elsayyid-yale-staircase.webp" variant="work" />
+      <Heading id="engineering-title">Selected engineering work</Heading>
+      <div className="engineering-list">{ENGINEERING.map(item => <article className="engineering-entry" key={item.title}><EntryContent item={item} /></article>)}</div>
+    </section>
+    <section className="page-shell section-block" id="projects" aria-labelledby="builds-title">
+      <Heading id="builds-title">Selected builds</Heading>
+      <div className="build-grid">{BUILDS.map((item, index) => <article className={`build-card${index === 0 ? " build-featured" : ""}`} key={item.title}><EntryContent item={item} /></article>)}</div>
+    </section>
+    <section className="leadership-band" id="leadership" aria-labelledby="leadership-title"><div className="page-shell section-block section-visual">
+      <SectionBackdrop src="/joseph-elsayyid-yale-som-welcome.webp" variant="leadership" />
+      <Heading id="leadership-title">Technology leadership</Heading>
+      <article className="leadership-feature">
+        <header><h3>YCC Technology Division</h3><p className="role">Founder &amp; Chair</p><p className="entry-meta">2025–2026</p><ExternalLink href="https://ycctech.org">ycctech.org</ExternalLink></header>
+        <div className="entry-body">
+          <p>Founded Yale College Council’s technology division and led an 11-member builder team creating infrastructure, funding, and programs that help students turn ideas into working technology.</p>
+          <p>Created a $200–$500 Bounty Board for short software builds; commissioned a Yale CAS starter kit and APIs for campus rooms, dining, events, and geospatial data; and required written specifications, acceptance criteria, public repositories, demonstrations, and payment on delivery.</p>
+          <p>Also launched hardware microgrants, a $1,000 Innovation Prize, alumni technology talks, agentic-AI workshops, and hackathons.</p>
 
-      <section className="page-shell section-block section-visual" id="leadership" aria-labelledby="leadership-title">
-        <SectionBackdrop src="/joseph-elsayyid-yale-som-welcome.webp" variant="leadership" />
-        <SectionHeading id="leadership-title">Leadership and Institution Building</SectionHeading>
-        <div className="entry-list">
-          <article className="entry entry-featured">
-            <h3>YCC Technology Division</h3>
-            <p className="entry-meta">Founder and Chair, 2025 to 2026</p>
-            <p>
-              Founded Yale College Council’s technology division as Yale’s
-              builder hub and led an 11-member team creating infrastructure,
-              funding, and events that help students ship useful technology for
-              Yale. Created a Bounty Board offering $200 to $500 for one-week
-              software builds, and commissioned a Yale CAS starter kit plus APIs
-              for campus rooms, dining, events, and geospatial data. Each project
-              used written specifications, acceptance criteria, public
-              repositories, demonstrations, and payment on delivery.
-            </p>
-            <p>
-              Launched hardware microgrants from $40 to $200, the $1,000 YCC
-              Innovation Prize, alumni technology talks, agentic AI workshops,
-              and hackathons. Coordinated proposal review, judges, funding
-              decisions, communications, and cross-campus execution.
-            </p>
-            <ExternalLink href="https://ycctech.org">ycctech.org</ExternalLink>
-          </article>
-          <article className="entry">
-            <h3>Student Advisory, Yale College</h3>
-            <p>
-              Competitively selected to advise Dean Alexia Belperron on Science
-              and Quantitative Reasoning resource allocation.
-            </p>
-            <ExternalLink href="https://science.yalecollege.yale.edu/academics-and-tutoring/student-advisory-committee">
-              Student Advisory Committee
-            </ExternalLink>
-          </article>
         </div>
-      </section>
-
-      <section className="page-shell section-block" id="projects" aria-labelledby="projects-title">
-        <SectionHeading id="projects-title">Selected Projects</SectionHeading>
-        <div className="entry-list">
-          {PROJECTS.map((project) => (
-            <article className="entry" key={project.title}>
-              <h3>{project.title}</h3>
-              <p className="entry-meta">{project.description}</p>
-              <p>{project.detail}</p>
-              {project.link ? (
-                <ExternalLink href={project.link.href}>{project.link.label}</ExternalLink>
-              ) : null}
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="page-shell section-block section-visual" id="global" aria-labelledby="global-title">
-        <SectionBackdrop src="/joseph-elsayyid-global-forum.webp" variant="global" />
-        <SectionHeading id="global-title">Global Technology and Public Affairs</SectionHeading>
-        <p className="section-intro">
-          These experiences inform how I think about semiconductor supply
-          chains, technological dependence, export controls, cross-border
-          technology markets, international competition, and technology
-          institutions.
-        </p>
-        <div className="entry-list">
-          {GLOBAL_EXPERIENCE.map((item) => (
-            <article className="entry" key={item.title}>
-              <h3>{item.title}</h3>
-              <p className="entry-meta">{item.meta}</p>
-              <p>{item.detail}</p>
-            </article>
-          ))}
-        </div>
-        <div className="languages">
-          <h3>Languages</h3>
-          <p>
-            Certified proficiency in Mandarin Chinese, Arabic, and Spanish;
-            conversational French and German.
-          </p>
-        </div>
-      </section>
-
-      <section className="page-shell section-block" id="articles" aria-labelledby="articles-title">
-        <SectionHeading id="articles-title">Featured Articles</SectionHeading>
-        <div className="article-list">
-          {ARTICLES.map((article) => (
-            <article className="article-entry" key={article.href}>
-              <h3>
-                <ExternalLink href={article.href}>{article.title}</ExternalLink>
-              </h3>
-              <p>{article.meta}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="page-shell section-block section-visual" id="about" aria-labelledby="about-title">
-        <SectionBackdrop src="/joseph-elsayyid-kitchen.webp" variant="about" />
-        <SectionHeading id="about-title">About</SectionHeading>
-        <div className="about-copy">
-          <p className="about-lead">
-            I’m an engineer interested in how emerging technologies move from
-            technical systems into companies, institutions, and international
-            competition.
-          </p>
-          <p>
-            My technical work in Belgium, Hong Kong, and at Yale developed
-            alongside international experience in Taiwan, Germany, Jordan, the
-            Middle East, and South America. That combination shaped my interest
-            in semiconductor ecosystems, technology governance, and the
-            institutions that influence technical progress. At Yale, I put that
-            interest into practice by founding YCC Tech and creating a channel
-            for students to improve campus technology.
-          </p>
-        </div>
-
-        <div className="credentials">
-          <section aria-labelledby="education-title">
-            <h3 id="education-title">Education</h3>
-            <div className="credential-list">
-              {EDUCATION.map((item) => (
-                <article className="credential" key={item.school}>
-                  <h4>{item.school}</h4>
-                  <p>{item.degree}</p>
-                  <p>{item.year}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-          <section aria-labelledby="honors-title">
-            <h3 id="honors-title">Honors</h3>
-            <div className="honors-list">
-              {HONORS.map((honor) => (
-                <p key={honor}>{honor}</p>
-              ))}
-            </div>
-          </section>
-        </div>
-      </section>
-
-      <section className="page-shell section-block contact-section" id="contact" aria-labelledby="contact-title">
-        <SectionHeading id="contact-title">Contact</SectionHeading>
-        <p>
-          To get in touch, email me at: <a href="mailto:elsayyidjoseph@gmail.com">elsayyidjoseph@gmail.com</a>.
-        </p>
-        <div className="plain-links">
-          <a href="/resume.pdf" target="_blank" rel="noreferrer">
-            Resume
-          </a>
-          <ExternalLink href="https://github.com/jelsayyid">GitHub</ExternalLink>
-        </div>
-      </section>
-    </>
-  );
+      </article>
+      <div className="leadership-secondary">
+        <article><h3>Yale Young Global Scholars</h3><p className="role">Course Instructor</p><p className="entry-meta">Summer 2026</p><p>Designed and taught three original technology seminars for students from 159 countries, spanning embedded and edge systems, health-data technology, cybersecurity, semiconductor supply chains, and technological dependence.</p><p>Built working technical prototypes for the classroom and used engineering systems as a way to connect technical decisions to larger questions about security, dependence, and society.</p><p>Led a CubeSat-style engineering program from problem selection and sensor choice through prototyping, testing, and final presentations.</p></article>
+        <article><h3>Student Advisory — Yale College</h3><p>Competitively selected to advise Yale College leadership on Science and Quantitative Reasoning resource allocation.</p><ExternalLink href="https://science.yalecollege.yale.edu/academics-and-tutoring/student-advisory-committee">Student Advisory Committee</ExternalLink></article>
+      </div>
+    </div></section>
+    <section className="page-shell section-block section-visual" id="global" aria-labelledby="global-title">
+      <SectionBackdrop src="/joseph-elsayyid-global-forum.webp" variant="global" />
+      <Heading id="global-title">Global technology &amp; public affairs</Heading>
+      <p className="section-intro">My technical work has developed alongside a long-standing interest in how technology moves across borders, including semiconductor supply chains, technological dependence, language, export controls, international competition, and the institutions that shape technical progress.</p>
+      <div className="global-grid">{GLOBAL.map(item => <article key={item.title}><h3>{item.title}</h3><p className="entry-meta">{item.meta}</p><p>{item.detail}</p></article>)}</div>
+      <div className="languages"><h3>Languages</h3><ul><li>Mandarin Chinese <span>Certified advanced proficiency</span></li><li>Arabic <span>Certified advanced proficiency</span></li><li>Spanish <span>Certified proficiency</span></li><li>French <span>Conversational</span></li></ul></div>
+    </section>
+    <section className="page-shell section-block" id="writing" aria-labelledby="writing-title">
+      <span className="anchor-alias" id="articles" />
+      <Heading id="writing-title">Selected writing &amp; coverage</Heading>
+      <div className="writing-list">{WRITING.slice(0, 4).map((article) => <article className="writing-entry" key={article.href}><div><h3><ExternalLink href={article.href} title={article.originalTitle}>{article.title}</ExternalLink></h3><p className="entry-meta">{article.meta}</p></div></article>)}</div>
+      <details className="more-writing"><summary>More writing and coverage</summary><div>{WRITING.slice(4).map(article => <article key={article.href}><h3><ExternalLink href={article.href} title={article.originalTitle}>{article.title}</ExternalLink></h3><p className="entry-meta">{article.meta}</p></article>)}</div></details>
+    </section>
+    <section className="page-shell section-block section-visual" id="about" aria-labelledby="about-title">
+      <SectionBackdrop src="/joseph-elsayyid-kitchen.webp" variant="about" />
+      <Heading id="about-title">About</Heading>
+      <div className="about-copy"><p>I want to build machines that are useful in everyday life and help more people participate in developing them. Living and working across languages and countries has shaped how I think about who technology serves. I’m interested in working with people who care about both the engineering and its consequences.</p></div>
+      <div className="credentials"><section aria-labelledby="education-title"><h3 id="education-title">Education</h3><article><h4>Yale School of Management</h4><p>M.M.S., Technology Management <span>2026–2027</span></p></article><article><h4>Yale University</h4><p>B.S., Electrical Engineering &amp; Computer Science <span>2026</span></p></article><article><h4>Wenzao Ursuline University of Languages</h4><p>Chinese Studies <span>2021–2022</span></p></article></section><section aria-labelledby="honors-title"><h3 id="honors-title">Honors</h3><ul className="honors-list"><li>Yale STARS Science Fellowship</li><li>Alan S. Tetelman 1958 Fellowship</li><li>U.S. Department of State Fellow — NSLI-Y, CBYX, Youth Ambassadors</li><li>U.S. Congressional Commendation</li><li>ISA Award for Advanced Arabic Study</li></ul></section></div>
+    </section>
+    <section className="page-shell section-block contact-section" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">Contact</h2><p>Want to talk about robotics, embedded systems, AI hardware, technology institutions, or something ambitious you’re building? I’d be glad to hear from you.</p><a className="contact-email" href="mailto:elsayyidjoseph@gmail.com">elsayyidjoseph@gmail.com</a><div className="plain-links"><ExternalLink href="https://github.com/jelsayyid">GitHub</ExternalLink><ExternalLink href="https://www.linkedin.com/in/joseph-elsayyid">LinkedIn</ExternalLink><ExternalLink href="/resume.pdf">Resume</ExternalLink></div></section>
+  </>;
 }

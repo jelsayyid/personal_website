@@ -1,23 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const NAV_LINKS = [
-  { href: "#work", label: "Work" },
+  { href: "#engineering", label: "Engineering" },
   { href: "#leadership", label: "Leadership" },
-  { href: "#projects", label: "Projects" },
   { href: "#global", label: "Global" },
-  { href: "#articles", label: "Articles" },
+  { href: "#writing", label: "Writing" },
   { href: "#about", label: "About" },
 ];
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && mobileOpen) {
+        setMobileOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    const desktop = window.matchMedia("(min-width: 761px)");
+    const closeOnDesktop = () => { if (desktop.matches) setMobileOpen(false); };
+    document.addEventListener("keydown", closeOnEscape);
+    desktop.addEventListener("change", closeOnDesktop);
     return () => {
-      document.body.style.overflow = "";
+      document.removeEventListener("keydown", closeOnEscape);
+      desktop.removeEventListener("change", closeOnDesktop);
     };
   }, [mobileOpen]);
 
@@ -28,6 +38,7 @@ export default function Navigation() {
           Joseph Elsayyid
         </a>
         <button
+          ref={toggleRef}
           className="nav-toggle"
           type="button"
           aria-expanded={mobileOpen}
