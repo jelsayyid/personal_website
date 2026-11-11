@@ -23,8 +23,8 @@ export default function Home() {
     <section className="hero page-shell" id="top" aria-labelledby="hero-title">
       <div className="hero-copy">
 
-        <h1 id="hero-title">Technology builder working across physical intelligence, AI hardware, and the institutions underneath them.</h1>
-        <p className="hero-subhead">Yale EECS graduate and Yale SOM Technology Management candidate. I build embedded and robotic systems, work on AI hardware and compute, and lead technology initiatives that turn technical ideas into deployed tools and institutions.</p>
+        <h1 id="hero-title">Building at the frontier of physical intelligence.</h1>
+        <p className="hero-subhead">Yale EECS graduate and Technology Management candidate building robots, intelligent hardware, and technology ventures.</p>
         <p className="hero-languages">Certified proficiency in Mandarin Chinese, Arabic, and Spanish; conversational French.</p>
         <div className="hero-actions" aria-label="Primary links">
           <a className="button button-primary" href="#engineering">Engineering work </a>
