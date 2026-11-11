@@ -23,8 +23,8 @@ export default function Home() {
     <section className="hero page-shell" id="top" aria-labelledby="hero-title">
       <div className="hero-copy">
 
-        <h1 id="hero-title">Building at the frontier of physical intelligence.</h1>
-        <p className="hero-subhead">Yale EECS graduate and Technology Management candidate building robots, intelligent hardware, and technology ventures.</p>
+        <h1 id="hero-title">Building toward physical intelligence.</h1>
+        <p className="hero-subhead">Yale EECS graduate and Technology Management candidate building intelligent hardware and technology ventures.</p>
         <p className="hero-languages">Certified proficiency in Mandarin Chinese, Arabic, and Spanish; conversational French.</p>
         <div className="hero-actions" aria-label="Primary links">
           <a className="button button-primary" href="#engineering">Engineering work </a>
@@ -101,6 +101,6 @@ export default function Home() {
       <SectionBackdrop src="/joseph-elsayyid-kitchen.webp" variant="about" />
       <div className="credentials"><section aria-labelledby="education-title"><h3 id="education-title">Education</h3><article><h4>Yale School of Management</h4><p>M.M.S., Technology Management <span>2026–2027</span></p></article><article><h4>Yale University</h4><p>B.S., Electrical Engineering &amp; Computer Science <span>2026</span></p></article><article><h4>Wenzao Ursuline University of Languages</h4><p>Chinese Studies <span>2021–2022</span></p></article></section><section aria-labelledby="honors-title"><h3 id="honors-title">Honors</h3><ul className="honors-list"><li>Yale STARS Science Fellowship</li><li>Alan S. Tetelman 1958 Fellowship</li><li>U.S. Department of State Fellow — NSLI-Y, CBYX, Youth Ambassadors</li><li>U.S. Congressional Commendation</li><li>ISA Award for Advanced Arabic Study</li></ul></section></div>
     </section>
-    <section className="page-shell section-block contact-section" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">Contact</h2><p>Want to talk about robotics, embedded systems, AI hardware, technology institutions, or something ambitious you’re building? I’d be glad to hear from you.</p><a className="contact-email" href="mailto:elsayyidjoseph@gmail.com">elsayyidjoseph@gmail.com</a><div className="plain-links"><ExternalLink href="https://github.com/jelsayyid">GitHub</ExternalLink><ExternalLink href="https://www.linkedin.com/in/joseph-elsayyid">LinkedIn</ExternalLink><ExternalLink href="/resume.pdf">Resume</ExternalLink></div></section>
+    <section className="page-shell section-block contact-section" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">Contact</h2><p>Want to chat about intelligent systems, tech institutions, or something exciting you’re building? I’d be glad to hear from you.</p><a className="contact-email" href="mailto:elsayyidjoseph@gmail.com">elsayyidjoseph@gmail.com</a><div className="plain-links"><ExternalLink href="https://github.com/jelsayyid">GitHub</ExternalLink><ExternalLink href="https://www.linkedin.com/in/joseph-elsayyid">LinkedIn</ExternalLink><ExternalLink href="/resume.pdf">Resume</ExternalLink></div></section>
   </>;
 }
