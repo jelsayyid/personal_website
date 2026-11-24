@@ -39,13 +39,11 @@ export default function Home() {
     <section className="page-shell section-block" id="engineering" aria-labelledby="now-title">
       <span className="anchor-alias" id="work" />
       <Heading id="now-title">What I’m building now</Heading>
-      <article className="current-project visualft">
-        <header><h3>VisualFT</h3><p className="role">Embedded Systems Engineer — Productization</p><p className="entry-meta">2026–Present</p></header>
+      <article className="current-project dexterous-labs">
+        <header><h3>Dexterous Labs, LLC</h3><p className="role">Embedded Systems Engineer — Productization</p><p className="entry-meta">2026–Present</p></header>
         <div className="entry-body">
-          <p className="project-lead">Helping productize a camera-based six-axis force/torque sensor for robotics. The system measures small deformations in an elastic flexure by tracking 15 fiducial markers, then maps those measurements to Fx, Fy, Fz, Mx, My, and Mz.</p>
-          <p>My work focuses on the embedded and systems side of the product, including Raspberry Pi/Linux integration, camera acquisition and marker processing, calibration and force estimation, latency and jitter characterization, throughput and compute profiling, robot-facing data streaming, diagnostics, fault handling, and deployment reliability.</p>
-          <p>The project brings together mechanics, optics, sensing, embedded software, and robot control, so getting it reliable requires debugging the full system.</p>
-          <Tags items={["Robotics", "Embedded Linux", "Raspberry Pi", "Camera sensing", "Calibration", "System integration", "Validation"]} />
+          <p className="project-lead">I help bring robotics hardware from prototype to deployment, working on embedded software, hardware and software integration, and system testing for reliable operation.</p>
+          <Tags items={["Robotics", "Embedded systems", "System integration", "Validation"]} />
         </div>
       </article>
       <article className="current-project rewind">
