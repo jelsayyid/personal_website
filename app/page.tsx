@@ -40,9 +40,9 @@ export default function Home() {
       <span className="anchor-alias" id="work" />
       <Heading id="now-title">What I’m building now</Heading>
       <article className="current-project dexterous-labs">
-        <header><h3>Dexterous Labs, LLC</h3><p className="role">Embedded Systems Engineer — Productization</p><p className="entry-meta">2026–Present</p></header>
+        <header><h3>Dexterous Labs, LLC</h3><p className="role">Electrical &amp; Embedded Systems Engineer — Robotics Productization</p><p className="entry-meta">2026–Present</p></header>
         <div className="entry-body">
-          <p className="project-lead">I help bring robotics hardware from prototype to deployment, working on embedded software, hardware and software integration, and system testing for reliable operation.</p>
+          <p className="project-lead">I develop the electronics and embedded systems for advanced robotics hardware, spanning PCB design, hardware–software integration, and system validation to bring research prototypes toward manufacturing.</p>
           <Tags items={["Robotics", "Embedded systems", "System integration", "Validation"]} />
         </div>
       </article>
